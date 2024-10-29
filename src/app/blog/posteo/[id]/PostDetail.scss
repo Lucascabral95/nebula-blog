@@ -1,0 +1,187 @@
+.post-detail {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 22px 24px;
+    max-width: 704px;
+
+    .detail-descripcion {
+        margin: 16px 0 0 0;
+
+        .detail-descripcion-texto {
+            font-size: 15px;
+            font-weight: 400;
+            color: var(--font-color-principal-dentro);
+        }
+    }
+
+    .detail-titulo {
+        margin: 12px 0 0 0;
+
+        .detail-titulo-texto {
+            color: black;
+            font-weight: bolder;
+            font-size: 42px;
+            line-height: 48px;
+        }
+    }
+
+    .detail-foto-fecha {
+        display: flex;
+        align-items: center;
+        margin: 14px 0 0px 0;
+
+        .detail-imagen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+
+            .imagen-posteo {
+                border-radius: 50%;
+            }
+        }
+
+        .nombre-fecha {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: 0 0 0 12px;
+
+            .fecha-publicacion {
+                display: flex;
+                align-items: center;
+
+                .link-link {
+                    font-size: 16px;
+                    color: black;
+                    font-weight: 600;
+                }
+
+                &:hover {
+                    .link-link {
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+            .mi-nombre {
+                display: flex;
+                align-items: center;
+
+                p {
+                    color: var(--font-color-principal-dentro);
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
+    .detail-likes-comments {
+        margin: 32px 0 0 0;
+        padding: 3px 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 0.8px solid rgba(221, 221, 221, 0.5);
+        border-bottom: 0.8px solid rgba(221, 221, 221, 0.5);
+        height: 50px;
+        user-select: none;
+
+        .contenedor-l-c {
+            display: flex;
+            align-items: center;
+
+            .icono {
+                display: flex;
+                align-items: center;
+                margin: 0 24px 0 0;
+
+                .i-i {
+                    display: flex;
+                    align-items: center;
+                    cursor: pointer;
+
+                    .icono-like {
+                        font-size: 16px;
+                        color: var(--font-color-principal-dentro);
+                    }
+
+                    &:hover {
+                        .icono-like {
+                            transition: 0.2s;
+                            color: black;
+                        }
+                    }
+                }
+
+                .cantidad {
+                    display: flex;
+                    align-items: center;
+                    margin: 0 0 0 8px;
+                    cursor: pointer;
+
+                    p {
+                        color: var(--font-color-principal-dentro);
+                        font-size: 14.2px;
+                    }
+
+                    &:hover {
+                        p {
+                            transition: 0.2s;
+                            color: black;
+                        }
+                    }
+                }
+            }
+        }
+
+        .contenedor-guardado {
+            .save {
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+
+                .icono-save {
+                    font-size: 16px;
+                    color: var(--font-color-principal-dentro);
+                }
+
+                &:hover {
+                    .icono-save {
+                        transition: 0.2s;
+                        color: black;
+                    }
+                }
+            }
+        }
+    }
+
+    .detail-content {
+        margin: 32px 0 0 0;
+
+        p {
+            color: var(--font-color-principal-dentro);
+            font-size: 20px;
+        }
+    }
+}
+
+@media (max-width: 727px) {
+    .post-detail {
+        .detail-titulo {
+            .detail-titulo-texto {
+                font-size: 32px;
+                line-height: 38px;
+                font-weight: bolder;
+            }
+        }
+
+        .detail-content{
+            p{
+                font-size: 18px;
+                line-height: 28px;
+            }
+        }
+    }
+}

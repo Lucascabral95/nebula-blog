@@ -1,0 +1,230 @@
+.header-oficial {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 8px 24px;
+    border-bottom: 1px solid #E5E5E5;
+
+    .contenedor-header-oficial {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .logo-nombre {
+            display: flex;
+
+            .log {
+                .titulo-logo-nombre {
+                    color: black;
+                    font-weight: bolder;
+                    font-size: 32px;
+                }
+            }
+
+            .buscador {
+                margin:  0 0 0 16px;
+                padding: 12px 14px;
+                border-radius: 20px;
+                background-color: #F9F9F9;
+                display: flex;
+                align-items: center;
+
+                .lupa {
+                    display: flex;
+                    align-items: center;
+                    .icono-buscador {
+                        font-size: 20px;
+                    }
+                }
+
+                .input-de-busqueda {
+                    margin: 0 0 0 8px;
+                    display: flex;
+                    align-items: center;
+
+                    .input-buscador {
+                        border: none;
+                        outline: none;
+                        background-color: transparent;
+                    }
+                }
+            }
+        }
+
+        .escribir-perfil {
+            display: flex;
+
+            .boton-lupa{
+                border: none;
+                outline: none;
+                background-color: transparent;
+                cursor: pointer;
+                padding: 0;
+                margin: 0 22px 0 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                display: none;
+
+                .icono-buscador {
+                    font-size: 24px;
+                    color: var(--font-color-principal-dentro);
+                }
+
+                &:hover{
+                    .icono-buscador {
+                        transition: 0.2s;
+                        color: black;
+                    }
+                }
+            }
+
+            .seccion {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+
+                .ic {
+
+                    .icono-escritura {
+                        color: var(--font-color-principal-dentro);
+                        font-size: 18px;
+                    }
+                }
+
+                .text {
+                    margin: 0 0 0 8px;
+
+                    .seccion-texto {
+                        font-size: 14px;
+                        color: var(--font-color-principal-dentro);
+                    }
+                }
+
+                &:hover {
+                    .ic {
+                        .icono-escritura {
+                            transition: 0.2s;
+                            color: var(--font-color-logueo);
+                        }
+                    }
+
+                    .text {
+                        .seccion-texto {
+                            transition: 0.2s;
+                            color: var(--font-color-logueo);
+                        }
+                    }
+                }
+            }
+
+            .perfil {
+                margin: 0 0 0 16px;
+                cursor: pointer;
+                
+                .imagen-perfil {
+                    border: 2.2px solid var(--color-fondo);
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+@media (max-width: 554px) {
+    .header-oficial {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        padding: 8px 24px;
+    
+        .contenedor-header-oficial {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+    
+            .logo-nombre {
+                display: flex;
+    
+                .log {
+                    .titulo-logo-nombre {
+                        font-size: 32px;
+                    }
+                }
+    
+                .buscador {
+                    margin:  0 0 0 16px;
+                    padding: 12px 14px;
+                    display: none;
+                    align-items: center;
+    
+                    .lupa {
+                        display: flex;
+                        align-items: center;
+                        .icono-buscador {
+                            font-size: 20px;
+                        }
+                    }
+    
+                    .input-de-busqueda {
+                        margin: 0 0 0 8px;
+                        display: flex;
+                        align-items: center;
+    
+                        .input-buscador {
+                        }
+                    }
+                }
+            }
+    
+            .escribir-perfil {
+                display: flex;
+
+                .boton-lupa{
+                    display: flex;
+                }
+    
+                .seccion {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+    
+                    .ic {
+    margin: 0 6px 0 0;
+                        .icono-escritura {
+                            font-size: 20px;
+                        }
+                    }
+    
+                    .text {
+                        margin: 0 0 0 8px;
+                        display: none;
+    
+                        .seccion-texto {
+                            font-size: 14px;
+                        }
+                    }
+    
+                }
+    
+                .perfil {
+                    margin: 0 0 0 16px;
+                    
+                    .imagen-perfil {
+                    }
+                }
+            }
+        }
+    }
+}

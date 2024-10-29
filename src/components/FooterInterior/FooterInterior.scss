@@ -1,0 +1,137 @@
+.footer-interior-oficial {
+    width: 100%;
+    background-color: #F9F9F9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 42px 0 0 0;
+
+    .contenedor-footer-interior-oficial {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 50px 0 0 0;
+
+        .footer-superior {
+            width: 100%;
+            padding: 0px 0 20px 0;
+            border-bottom: 1px solid #E5E5E5;
+            display: flex;
+            justify-content: center;
+
+            .contenedor-footer-superior {
+                padding: 0 24px;
+                width: 100%;
+                max-width: 704px;
+
+                .footer-foto {
+                    width: 100%;
+                    margin: 0 0 16px 0;
+
+                    .foto {
+                        width: 72px;
+                        height: 72px;
+
+                        .footer-logo {
+                            background-color: #F2F2F2;
+                            border: 1px solid black;
+                            border-radius: 50%;
+                        }
+                    }
+                }
+
+                .footer-nombre {
+                    width: 100%;
+                    margin: 0 0 8px 0;
+
+                    p {
+                        font-size: 24px;
+                        color: black;
+                        font-weight: bolder;
+                    }
+                }
+            }
+
+            .footer-descripcion {
+                width: 100%;
+
+                p {
+                    font-size: 14px;
+                    color: var(--font-color-principal-dentro);
+                }
+            }
+        }
+
+        .footer-inferior {
+            width: 100%;
+            border-top: 1px solid #E5E5E5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .contenedor-footer-inferior {
+                width: 100%;
+                max-width: 704px;
+                padding: 0 24px;
+
+                .footer-secciones {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    padding: 12px 0;
+
+                    .presentacion-mia {
+                        padding: 16px 0;
+
+                        p {
+                            font-size: 14px;
+                            color: var(--font-color-principal-dentro);
+                            text-align: center;
+
+                            .link-mio{
+                                color: var(--font-color-logueo);
+                                text-decoration: underline;                            
+                            }
+                        }
+                    }
+
+                    .seccion-redes {
+                        display: flex;
+                        justify-content: space-evenly;
+                        align-items: center;
+
+                        .seccion {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            padding: 8px 0;
+
+                            .icono {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                width: 32px;
+                                height: 32px;
+                                border-radius: 50%;
+                                cursor: pointer;
+                                background-color: black;
+
+                                .icono-seccion {
+                                    font-size: 24px;
+                                    color: white;
+                                }
+
+                                &:hover {
+                                    transition: 0.2s;
+                                    background-color: var(--font-color-logueo);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

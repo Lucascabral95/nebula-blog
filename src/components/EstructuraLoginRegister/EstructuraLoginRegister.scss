@@ -1,0 +1,308 @@
+.estructura-login-register {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    .contenedor-estructura-login-register {
+        height: fit-content;
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0px 4px 8px rgba(16, 24, 40, 0.3), 0px 2px 4px rgba(16, 24, 40, 0.2), 0px 1px 2px rgba(16, 24, 40, 0.12), 0px 0px 1px rgba(16, 24, 40, 0.08);
+        display: flex;
+        flex-direction: column;
+        // width: 472px;
+        width: 680px;
+
+        .contenedor-de-boton {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 12px 0px 0 0;
+            transform: translateX(-12px);
+
+            .cont {
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+
+                .close-icon {
+                    font-size: 24px;
+                    color: var(--font-color-principal);
+                }
+            }
+        }
+
+        .div-login {
+            padding: 44px 56px;
+
+            .login-titulo {
+                width: 100%;
+                margin: 0 0 56px 0;
+
+                h2 {
+                    text-align: center;
+                    color: black;
+                    font-size: 28px;
+                    font-weight: 600;
+                }
+            }
+
+            .titulo-dee-logueo {
+                width: 100%;
+                margin: 16px 0 12px 0;
+
+                h3 {
+                    text-align: center;
+                    color: black;
+                    font-size: 18px;
+                    font-weight: 600;
+                }
+            }
+
+            .titulo-dee-registro {
+                width: 100%;
+                margin: -30px 0 16px 0;
+
+                h3 {
+                    text-align: center;
+                    color: black;
+                    font-size: 18px;
+                    font-weight: 600;
+                }
+            }
+
+            .texto-instruccion {
+                width: 100%;
+                margin: 20px 0 40px 0;
+
+                p {
+                    text-align: center;
+                    font-weight: 400;
+                    font-size: 18px;
+                    color: var(--font-color-principal);
+                }
+            }
+
+            .botones {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .boton-generico {
+                    border: 1px solid var(--font-color-principal);
+                    background-color: transparent;
+                    padding: 8px;
+                    border-radius: 20px;
+                    width: 300px;
+                    height: 42px;
+                    margin: 0 0 16px 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    cursor: pointer;
+
+                    .icono-boton-google {
+
+                        .icon {
+                            font-size: 24px;
+                        }
+                    }
+
+                    .icono-boton {
+
+                        .icon {
+                            font-size: 24px;
+                        }
+                    }
+
+                    .texto {
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+
+                        p {
+                            color: var(--font-color-principal);
+                            font-size: 16px;
+                            font-weight: 400;
+                        }
+                    }
+                }
+            }
+
+            .confirmacion {
+                margin: 40px 0 0 0;
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+
+                p {
+                    text-align: center;
+                    font-size: 16px;
+                }
+
+            }
+
+            .confirmacion-boton {
+                margin: 0 0 40px 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .link-acceso {
+                    background-color: var(--font-color-logueo);
+                    border: none;
+                    cursor: pointer;
+                    color: white;
+                    font-size: 14px;
+                    border-radius: 16px;
+                    margin: 6px 0 0 0;
+                    padding: 6px 16px;
+                }
+            }
+
+            .terminos-condiciones {
+                width: 100%;
+
+                p {
+                    text-align: center;
+                }
+            }
+
+            .formulario-ddbb {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .contenedor-de-inputs {
+                    width: 300px;
+                    margin: 0 0 16px 0;
+
+                    label {
+                        color: var(--font-color-principal);
+                        font-size: 16px;
+                    }
+
+                    .envoltura-de-input {
+                        margin: 4px 0 0 0;
+                        border-radius: 20px;
+                        padding: 10px 12px;
+                        border: 1px solid var(--font-color-principal);
+
+                        input {
+                            font: 12.8px;
+                            width: 100%;
+                            border: none;
+                            outline: none;
+                        }
+                    }
+
+                    .aclaracion-texto {
+                        color: var(--font-color-principal);
+                        font-size: 12px;
+                        font-weight: 400;
+                        text-align: center;
+                        margin: 4px 0 0 0;
+                    }
+                }
+
+                .boton-para-ingresar {
+                    width: 300px;
+                    height: 42px;
+                    border-radius: 20px;
+                    border: none;
+                    background-color: black;
+                    color: white;
+                    font-size: 16px;
+                    font-weight: 600;
+                    cursor: pointer;
+                    margin: 12px 0 0 0;
+
+                    &:hover {
+                        transition: 0.2s;
+                        background-color: var(--font-color-principal);
+                    }
+                }
+
+                .error {
+                    margin: 5px 0 8px 0;
+                    text-align: center;
+                    color: red;
+                    font-size: 14px;
+                    font-weight: 600;
+                }
+            }
+
+            .opciones-de-logueo {
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: var(--font-color-logueo);
+                margin: 20px 0 0 0;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+
+                .icon-back {
+                    margin: 0 4px 0 0;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 725px) and (max-width: 900px) {
+.estructura-login-register{
+ 
+    .contenedor-estructura-login-register {
+    // width: 472px;
+    width: 600px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+}
+}
+
+// Medias Queries de Login/Register
+@media (max-width: 724px) {
+    .estructura-login-register {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.9);
+        z-index: 999;
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        .contenedor-estructura-login-register {
+            height: 100vh;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0px 4px 8px rgba(16, 24, 40, 0.3), 0px 2px 4px rgba(16, 24, 40, 0.2), 0px 1px 2px rgba(16, 24, 40, 0.12), 0px 0px 1px rgba(16, 24, 40, 0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+    }
+}

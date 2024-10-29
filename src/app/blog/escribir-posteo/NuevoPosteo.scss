@@ -1,0 +1,151 @@
+.posteo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .contenedor-posteo {
+        width: 100%;
+        padding: 0 24px;
+        max-width: 1072px;
+        display: flex;
+        flex-direction: column;
+
+        .header-posteo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 65px;
+
+            .logo-posteo {
+                display: flex;
+                align-items: center;
+
+                .tituloo {
+                    display: flex;
+                    align-items: center;
+
+                    h2 {
+                        font-weight: 600;
+                        font-size: var(--font-size-logo);
+                        color: black;
+                    }
+                }
+
+                .descripcion {
+                    display: flex;
+                    align-items: center;
+                    margin: 0 0 0 14px;
+
+                    p {
+                        font-size: 14.8px;
+                        color: black;
+                    }
+                }
+            }
+
+            .publicacion-posteo {
+                .boton-publicar {
+                    color: white;
+                    font-size: 14px;
+                    font-weight: 600;
+                    background-color: var(--font-color-logueo);
+                    border: none;
+                    border-radius: 20px;
+                    padding: 8px 16px;
+                    cursor: pointer;
+                }
+            }
+        }
+
+    }
+
+    .footer-inferior {
+        width: 100%;
+        border-top: 1px solid #E5E5E5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #F9F9F9;
+
+        .contenedor-footer-inferior {
+            width: 100%;
+            max-width: 704px;
+            padding: 0 24px;
+
+            .footer-secciones {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 12px 0;
+
+                .presentacion-mia {
+                    padding: 16px 0;
+
+                    p {
+                        font-size: 14px;
+                        color: var(--font-color-principal-dentro);
+                        text-align: center;
+
+                        .link-mio {
+                            color: var(--font-color-logueo);
+                            text-decoration: underline;
+                        }
+                    }
+                }
+
+                .seccion-redes {
+                    display: flex;
+                    justify-content: space-evenly;
+                    align-items: center;
+
+                    .seccion {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 8px 0;
+
+                        .icono {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            width: 32px;
+                            height: 32px;
+                            border-radius: 50%;
+                            cursor: pointer;
+                            background-color: black;
+
+                            .icono-seccion {
+                                font-size: 24px;
+                                color: white;
+                            }
+
+                            &:hover {
+                                transition: 0.2s;
+                                background-color: var(--font-color-logueo);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 390px) {
+    .posteo {
+        .contenedor-posteo {
+            .header-posteo {
+                .logo-posteo {
+                    .descripcion {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}

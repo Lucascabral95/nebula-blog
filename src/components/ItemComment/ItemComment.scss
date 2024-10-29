@@ -1,0 +1,237 @@
+.comment {
+    top: 0;
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    background-color: rgba(245, 245, 245, 0.1);
+    position: fixed;
+
+    .contenedor-comment {
+        width: 400px;
+        height: auto;
+        background-color: white;
+        box-shadow: -4px 0 8px rgba(16, 24, 40, 0.08), -2px 0 4px rgba(16, 24, 40, 0.04);
+        display: flex;
+        flex-direction: column;
+        top: 0 !important;
+        right: 0 !important;
+        height: 100vh;
+        overflow-y: scroll;
+        position: fixed;
+        word-break: break-word;
+
+        .respuestas {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px;
+
+            .texto {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                p {
+                    color: black;
+                    font-size: 20px;
+                    font-weight: 600;
+                }
+            }
+
+            .icono-closee {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+
+                .close {
+                    font-size: 24px;
+                    color: var(--font-color-principal-dentro);
+                }
+
+                &:hover {
+                    .close {
+                        transition: 0.2s;
+                        color: black;
+                    }
+                }
+            }
+        }
+
+        .comentarios-contenedor {
+            padding: 0 24px 50px 24px;
+            border-bottom: 1px solid rgb(221, 221, 221);
+            box-shadow: 0px 4px 8px rgba(16, 24, 40, 0.08);
+
+            .creacion-comentarios {
+                width: 100%;
+                height: fit-content;
+                padding: 14px;
+                box-shadow: 0px -4px 8px rgba(16, 24, 40, 0.08), 0px 4px 8px rgba(16, 24, 40, 0.08);
+
+
+                .comentarios {
+                    display: flex;
+                    align-items: center;
+                    padding: 0 0 14px 0;
+
+                    .foto {
+                        .foto-perfil-comentarios {
+                            border-radius: 50%;
+                        }
+                    }
+
+                    .nombre-comentario {
+                        margin: 0 0 0 10px;
+
+                        p {
+                            font-weight: 400;
+                            color: black;
+                            font-size: 15.2px;
+                        }
+                    }
+                }
+
+                .comentarios-input {
+                    width: 100%;
+                    padding: 0 0 14px 0;
+
+                    textarea {
+                        color: var(--font-color-principal-dentro);
+                        font-size: 14px;
+                        width: 100%;
+                        height: fit-content;
+                        min-height: 100px;
+                        border: none;
+                        outline: none;
+                    }
+                }
+
+                .enviar-cancelar {
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-end;
+
+                    .boton-de-cancelar {
+                        border-radius: 20px;
+                        padding: 5px 12px;
+                        color: black;
+                        background-color: transparent;
+                        border: none;
+                        cursor: pointer;
+                    }
+
+                    .boton-de-enviar {
+                        cursor: pointer;
+                        border-radius: 20px;
+                        padding: 5px 12px;
+                        background-color: var(--font-color-logueo);
+                        border: none;
+                        color: white;
+                    }
+                }
+            }
+        }
+
+        .posteo-comentarios {
+            width: 100%;
+            padding: 0 24px;
+
+            .comentario {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                border-bottom: 0.5px solid rgba(121, 121, 121, 0.2);
+                padding: 25px 0 16px 0;
+
+                .datos {
+                    display: flex;
+                    align-items: center;
+
+                    .foto {
+                        .foto-foto {
+                            border-radius: 50%;
+                        }
+                    }
+
+                    .nombre-fecha {
+                        margin: 0 0 0 12px;
+
+                        .nombre {
+                            display: flex;
+                            align-items: center;
+
+                            p {
+                                color: black;
+                                font-size: 14px;
+                                font-weight: 600;
+                            }
+                        }
+
+                        .fecha {
+                            display: flex;
+                            align-items: center;
+
+                            p {
+                                font-size: 12.8px;
+                                color: var(--font-color-principal-dentro);
+                            }
+                        }
+                    }
+                }
+
+                .contenido {
+                    display: flex;
+                    align-items: center;
+                    margin: 14px 0 0 0;
+                    
+                    .cont {
+                        display: flex;
+                        align-items: center;
+                        
+                        p {
+                            font-family: 15px;
+                            color: black;
+                        }
+                    }
+                }
+
+                .espacio-likes {
+                    display: flex;
+                    align-items: center;
+                    margin: 14px 0 0 0;
+                    user-select: none;
+
+                    .icono {
+                        cursor: pointer;
+
+                        .icon {
+                            color: var(--font-color-principal-dentro);
+                            font-size: 14px;
+                        }
+
+                        &:hover {
+                            .icon {
+                                transition: 0.2s;
+                                color: red;
+                            }
+                        }
+                    }
+
+                    .texto-likes {
+                        display: flex;
+                        align-items: center;
+                        margin: 0 0 0 4px;
+
+                        p {
+                            color: black;
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

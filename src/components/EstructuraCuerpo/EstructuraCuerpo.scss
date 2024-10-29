@@ -1,0 +1,37 @@
+.estructura-cuerpo {
+    width: 100%;
+
+    .contenedor-estructura-cuerpo {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .main-original {
+            width: 100%;
+            max-width: 1330px;
+            padding: 0 24px;
+        }
+
+        .main-secundario {
+            min-height: 100vh;
+            width: 100% !important;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+}
+
+@media (max-height: 904px) {
+    .estructura-cuerpo {
+        .contenedor-estructura-cuerpo {
+            .main-original {
+            }
+
+            .main-secundario {
+            }
+        }
+    }
+}
