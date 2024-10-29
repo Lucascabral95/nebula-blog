@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Nebula Blog
 
-## Getting Started
+## Instalación
 
-First, run the development server:
+Instalar real-time-chat con npm
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+  git clone https://github.com/Lucascabral95/nebula-blog.git
+  cd nebula-blog
+  npm install 
+  npm run dev
 ```
+ 
+## 🌟 Descripción
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Blog interactivo con gestión de usuarios y persistencia de estado, donde cada perfil permite la creación de publicaciones, interacción mediante likes y comentarios, y la opción de guardar posteos en favorits. Diseñado para ofrecer una experiencia personalizada y de alto rendimiento.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## ⚙️ Características Principales:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **Creación de Publicaciones**: Los usuarios pueden crear posteos con título, categoría, slug automático y contenido.
+- **Filtrado de Publicaciones**: Permite filtrar posteos por título, autor o categoría mediante un buscador, así como explorar un conjunto de categorías recomendadas.
+- **Secciones Dinámicas**:Cada publicación incluye información del autor, y los usuarios pueden dar likes y realizar comentarios, que también pueden ser valorados.
+- **Perfil Personalizado**: Los usuarios pueden agregar datos personales para exhibir en su perfil.
+- **Favoritos**: Posibilidad de guardar publicaciones en favoritos para un acceso rápido.
+- **Autenticación Segura**: Implementa login y registro, permitiendo acceso con credenciales propias o mediante autenticación con Google, gracias a NextAuth.
 
-## Learn More
+## 📄 Conclusión:
 
-To learn more about Next.js, take a look at the following resources:
+**Nebula Blog**: este blog interactivo es una muestra de mis habilidades en desarrollo web, combinando funcionalidades robustas con un enfoque centrado en el usuario. A través de la gestión de publicaciones, interacciones dinámicas y autenticación segura, he creado una plataforma que fomenta la participación y mejora la experiencia del usuario. Este proyecto refleja mi compromiso con la calidad y la innovación, y resalta mi capacidad para aportar soluciones efectivas y escalables en el ámbito del desarrollo de aplicaciones web.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🚀 Tecnologías Utilizadas 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **Next.js**: Framework de React que permite la construcción de aplicaciones web y APIs con funcionalidades de renderizado del lado del servidor.
+- **MongoDB**: Base de datos NoSQL que almacena los mensajes y datos de usuario de forma persistente.
+- **SASS**: Para estilos y diseño responsivo, asegurando una buena experiencia en diferentes dispositivos.
+- **NextAuth.js**: Librería de autenticación que soporta múltiples métodos de inicio de sesión, incluyendo Google.
+- **Zustand**: : Librería de gestión de estado para aplicaciones JavaScript, diseñada para manejar estados globales de forma eficiente y sencilla. Facilita el acceso y actualización de datos en distintas partes de una aplicación sin depender de estructuras complejas.
 
-## Deploy on Vercel
+## 📬 Contacto
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Si tenés alguna pregunta o sugerencia, no dudes en contactarme a través de lucassimple@hotmail.com o https://github.com/Lucascabral95
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Notas: 
+
+- Añadí secciones como **Tecnologías Utilizadas**, **Descripción**, **Conclusión**, **Características Principales** y **Contacto** para hacer el README más completo.
