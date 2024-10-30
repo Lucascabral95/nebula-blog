@@ -4,6 +4,7 @@ import { useState } from "react"
 import Login from "@/components/Login/Login"
 import Register from "@/components/Register/Register"
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
+import Image from "next/image"
 
 const Home = () => {
   const [isOpenLogin, setIsOpenLogin] = useState(false)
@@ -33,14 +34,21 @@ const Home = () => {
           <div className="contenedor-main-inicio">
 
             <div className="contenedor-ideas">
-              <div className="subtitulo">
-                <h2 className="subtitulo-texto"> Ideas y reflexiones humanas </h2>
+              <div className="parte">
+                <div className="subtitulo">
+                  <h2 className="subtitulo-texto"> Ideas y reflexiones humanas </h2>
+                </div>
+                <div className="descripcion">
+                  <h2 className="descripcion-texto"> Un espacio para leer, escribir y ampliar tu comprensión. </h2>
+                </div>
+                <div className="boton-de-comienzo">
+                  <button className="comienzo" onClick={() => setIsOpenLogin(true)}> Comenzar a leer </button>
+                </div>
               </div>
-              <div className="descripcion">
-                <h2 className="descripcion-texto"> Un espacio para leer, escribir y ampliar tu comprensión. </h2>
-              </div>
-              <div className="boton-de-comienzo">
-                <button className="comienzo" onClick={() => setIsOpenLogin(true)}> Comenzar a leer </button>
+              <div className="parte">
+                <div className="imagen-absoluta">
+                  <Image src="/img/dibujo-login.png" className="imagen" width={500} height={500} alt="Imagen de inicio" />
+                </div>
               </div>
             </div>
 

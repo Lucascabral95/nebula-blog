@@ -30,3 +30,25 @@ export async function POST(req) {
         return NextResponse.json({ error: "Error en el servidor" }, { status: 500 });
     }
 }
+
+export async function GET(req) {
+    const id = new URL(req.url).searchParams.get('id');
+
+    if (!id) {
+        return NextResponse.json({ error: "Faltan campos obligatorios" }, { status: 400 });
+    }
+
+    try {
+        const user = await UserDAO.getUserById(id);
+
+        if (!user) {
+            return NextResponse.json({ error: "El usuario no existe" }, { status: 404 });
+        }
+
+        return NextResponse.json({ result: "Usuario encontrado" }, { status: 200 });
+
+    } catch (error) {
+        console.error("Error al buscar usuario:", error);
+        return NextResponse.json({ error: "Error en el servidor" }, { status: 500 });
+    }
+}

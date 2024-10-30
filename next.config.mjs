@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ['lh3.googleusercontent.com'],
+        domains: [
+            'lh3.googleusercontent.com'
+        ],
     },
     async redirects() {
         return [
@@ -13,13 +15,13 @@ const nextConfig = {
                     {
                         type: 'header',
                         key: 'x-redirection',
-                        value: 'blog', 
+                        value: 'blog',
                     },
                 ],
             },
         ];
     },
-    
+
 };
 
 export default nextConfig;

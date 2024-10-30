@@ -109,4 +109,5 @@ const PerfilDeDatos = ({ dataMyPosts, id }) => {
     )
 }
 
-export default PerfilDeDatos
+export default PerfilDeDatos;
+

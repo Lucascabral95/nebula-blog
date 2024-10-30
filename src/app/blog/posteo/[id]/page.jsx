@@ -30,25 +30,32 @@ const PostDetail = () => {
     useEffect(() => {
         const getPosteo = async () => {
             try {
-                const result = await axios.get("/api/post")
+                const result = await axios.get("/api/post");
 
                 if (result.status === 200 || result.status === 201) {
-                    setDataPost(result.data.posts.filter(post => post._id === id)[0])
-                    setCantidadLikes(result.data.posts.filter(post => post._id === id)[0].likes)
-                }
+                    const post = result.data.posts.find(post => post._id === id); 
 
+                    if (!post) {
+                        window.location.href = "/blog/sdkfjnsjnfd";
+                        return;
+                    }
+
+                    setDataPost(post); 
+                    setCantidadLikes(post.likes); 
+                }
             } catch (error) {
                 if (error.response) {
-                    const { status, data } = error.response
-                    console.error(`Error ${status}: ${data.error}`)
+                    const { status, data } = error.response;
+                    console.error(`Error ${status}: ${data.error}`);
                 } else {
-                    console.error('Error de red o solicitud fallida:', error.message)
+                    console.error('Error de red o solicitud fallida:', error.message);
                 }
             }
-        }
+        };
 
-        getPosteo()
-    }, [id, cantidadLikes])
+        getPosteo();
+    }, [id]); 
+
 
     useEffect(() => {
         const obtenerCantidadComentarios = async () => {

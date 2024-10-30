@@ -6,20 +6,6 @@ import "./EstructuraCuerpo.scss"
 import useStore from "@/zustand"
 
 const EstructuraCuerpo = ({ children, childrenDetail, detalle }) => {
-    // const { isOpenSearchFull, setIsOpenSearchFull } = useStore()
-    // const [isMobile, setIsMobile] = useState(window.innerWidth <= 554);
-
-    // useEffect(() => {
-    //     const updateSize = () => {
-    //         const isNowMobile = window.innerWidth <= 554;
-    //         setIsMobile(isNowMobile);
-
-    //         if (!isNowMobile) setIsOpenSearchFull(false);
-    //     };
-
-    //     window.addEventListener('resize', updateSize);
-    //     return () => window.removeEventListener('resize', updateSize);
-    // }, []);
     const { isOpenSearchFull, setIsOpenSearchFull } = useStore();
     const [isMobile, setIsMobile] = useState(false);
 
@@ -46,16 +32,6 @@ const EstructuraCuerpo = ({ children, childrenDetail, detalle }) => {
             <div className="contenedor-estructura-cuerpo">
 
                 <Header />
-
-                {/* <main className="main-original">
-                    {children}
-                </main>
-
-                {detalle &&
-                    <main className="main-secundario">
-                        {childrenDetail}
-                    </main>
-                } */}
 
                 {isOpenSearchFull
                     ?

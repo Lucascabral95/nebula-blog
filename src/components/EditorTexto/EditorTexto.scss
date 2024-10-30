@@ -137,6 +137,7 @@
                     color: var(--font-color-principal-dentro); 
                     background-color: #fff; 
                     transition: border-color 0.3s, box-shadow 0.3s; 
+                    overflow: hidden;
                 
                     &:focus{
                         outline: none;

@@ -39,6 +39,16 @@ class UserDAO {
         }
     }
 
+    async getUserById(id) {
+        try {
+            const user = await User.findOne({ _id: id });
+            return user;
+        } catch (error) {
+            console.error("Error al buscar usuario:", error);
+            throw error;
+        }
+    }
+
     async validatePassword(passwordCredentials, password) {
         try {
             const isMatch = await bcrypt.compare(passwordCredentials, password);
