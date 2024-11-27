@@ -3,13 +3,8 @@ import "./FooterInterior.scss"
 import Image from "next/image"
 import Link from "next/link"
 import { FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
-import { useEffect } from "react";
 
 const FooterInterior = ({ misDatos, dataPost }) => {
-
-    useEffect(() => {
-        console.log(misDatos)
-    }, [])
 
     return (
         <footer className="footer-interior-oficial">
@@ -26,9 +21,9 @@ const FooterInterior = ({ misDatos, dataPost }) => {
                         <Link href={`/blog/perfil/${misDatos?.user}`} className="footer-nombre">
                             <p>
                                 {misDatos?.nombreCompleto
-                                    ? misDatos.nombreCompleto
+                                    ? misDatos?.nombreCompleto
                                     : dataPost?.author?.[0]?.name
-                                        ? dataPost.author[0].name.replace(/\b\w/g, (char) => char.toUpperCase())
+                                        ? dataPost?.author[0]?.name.replace(/\b\w/g, (char) => char.toUpperCase())
                                         : 'Nombre no disponible'}
                             </p>
                         </Link>

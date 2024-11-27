@@ -1,5 +1,6 @@
 import mongo from "@/services/mongoDB";
 import Bio from "@/models/Bio";
+import PostDAO from "./PostDAO";
 
 class BioDAO {
     constructor() {
@@ -51,6 +52,18 @@ class BioDAO {
             return result;
         } catch (error) {
             console.error("Error al eliminar el bio:", error);
+            throw error;
+        }
+    }
+
+    async getBioFromPostAuthor(id) {
+        try {
+            const post = await PostDAO.getPostById(id);
+            const result = await Bio.findOne({ user: post.author[0]._id });
+            
+            return result;
+        } catch (error) {
+            console.error("Error al obtener el bio:", error);
             throw error;
         }
     }

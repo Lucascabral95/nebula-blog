@@ -3,7 +3,6 @@ import { useState } from 'react'
 import EstructuraLoginRegister from '../EstructuraLoginRegister/EstructuraLoginRegister'
 import "../EstructuraLoginRegister/EstructuraLoginRegister.scss"
 import { signIn } from "next-auth/react"
-import { FcGoogle } from "react-icons/fc";
 
 const Credentials = () => {
     const [email, setEmail] = useState("")

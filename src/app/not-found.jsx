@@ -3,15 +3,10 @@ import EstructuraCuerpo from "@/components/EstructuraCuerpo/EstructuraCuerpo"
 import "./App.scss"
 import Image from "next/image"
 import Link from "next/link"
-import { useEffect } from "react"
 import { useSession } from "next-auth/react"
 
 const PageNotFound = () => {
   const { data: session } = useSession()
-
-  useEffect(() => {
-    console.log(session)
-  }, [session])
 
   return (
     <>

@@ -41,7 +41,7 @@ export async function POST(req) {
         const favoritaExistente = usuarioExistente.post.find(favorita => favorita._id.toString() === post);
 
         if (favoritaExistente) {
-            return NextResponse.json({ error: "La publicación ya se encuentra en favoritos" }, { status: 400 });
+            return NextResponse.json({ error: "La publicación ya se encuentra en [favorito]s" }, { status: 400 });
         }
 
         const favorita = await FavoritasDAO.addPostToFavoritas(user, post);

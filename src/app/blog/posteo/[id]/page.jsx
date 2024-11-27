@@ -33,15 +33,15 @@ const PostDetail = () => {
                 const result = await axios.get("/api/post");
 
                 if (result.status === 200 || result.status === 201) {
-                    const post = result.data.posts.find(post => post._id === id); 
+                    const post = result.data.posts.find(post => post._id === id);
 
                     if (!post) {
                         window.location.href = "/blog/sdkfjnsjnfd";
                         return;
                     }
 
-                    setDataPost(post); 
-                    setCantidadLikes(post.likes); 
+                    setDataPost(post);
+                    setCantidadLikes(post.likes);
                 }
             } catch (error) {
                 if (error.response) {
@@ -54,8 +54,7 @@ const PostDetail = () => {
         };
 
         getPosteo();
-    }, [id]); 
-
+    }, [id]);
 
     useEffect(() => {
         const obtenerCantidadComentarios = async () => {
@@ -102,11 +101,11 @@ const PostDetail = () => {
     useEffect(() => {
         const obtenerMisDatos = async () => {
             try {
-                const result = await axios.get(`/api/detalles/bio?id=${dataPost?.author[0]?._id}`)
+                // const result = await axios.get(`/api/detalles/bio?id=${dataPost?.author[0]?._id}`)
+                const result = await axios.get(`/api/detalles/bio/detalle/${dataPost?._id}`)
 
                 if (result.status === 200 || result.status === 201) {
                     setMisDatos(result.data.result)
-
                     setLoadingSkeleton(false)
                 }
 
@@ -120,7 +119,7 @@ const PostDetail = () => {
             }
         }
         obtenerMisDatos()
-    }, [dataPost])
+    }, [dataPost._id])
 
     const guardarEnFavoritos = async (e) => {
         e.preventDefault();
