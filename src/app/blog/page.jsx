@@ -118,7 +118,7 @@ const Blog = () => {
 
     useEffect(() => {
         if (arrayDePosteos.length > 0 || search) {
-            setArrayAMostrar(arrayDePosteos);
+            setArrayAMostrar(arrayDePosteos);  
         } else {
             setArrayAMostrar(dataPosteos);
         }
@@ -153,7 +153,7 @@ const Blog = () => {
                                             <Link href={`/blog/perfil/${item?.author[0]?._id}`} className="imagen">
                                                 <Image
                                                     className="imagen-imagen"
-                                                    src={item?.author[0]?.avatar === "" || item?.author[0].avatar === null || item?.author[0].avatar === undefined ? "/img/title-doraemon.jpg" : item.author[0].avatar}
+                                                    src={item?.author[0]?.avatar === "" || item?.author[0]?.avatar === null || item?.author[0]?.avatar === undefined ? "/img/title-doraemon.jpg" : item?.author[0]?.avatar}
                                                     alt="Perfil" width={20} height={20}
                                                 />
                                             </Link>

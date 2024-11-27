@@ -101,7 +101,6 @@ const PostDetail = () => {
     useEffect(() => {
         const obtenerMisDatos = async () => {
             try {
-                // const result = await axios.get(`/api/detalles/bio?id=${dataPost?.author[0]?._id}`)
                 const result = await axios.get(`/api/detalles/bio/detalle/${dataPost?._id}`)
 
                 if (result.status === 200 || result.status === 201) {
