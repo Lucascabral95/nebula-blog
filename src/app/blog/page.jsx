@@ -149,7 +149,6 @@ const Blog = () => {
 
                             <div className="contenedor-ultimos-posteos">
                                 {arrayAMostrar.slice(0, posteosPorPagina).map((item, index) => (
-                                    // <div onClick={() => setSearch("")} href={`/blog/posteo/${item._id}`} className="posteoss" key={index}>
                                     <div style={{ cursor: "pointer" }} 
                                     onClick={() => {setSearch(""); router.push(`/blog/posteo/${item._id}`)}} className="posteoss" key={index}>
                                         <div className="perfil-nombre-categoria">

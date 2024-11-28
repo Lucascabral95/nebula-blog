@@ -26,6 +26,7 @@ const PostDetail = () => {
     const [cantidadLikes, setCantidadLikes] = useState(0);
     const [misDatos, setMisDatos] = useState([]);
     const [loadingSkeleton, setLoadingSkeleton] = useState(true);
+    const [idAuthor, setIdAuthor] = useState("");
 
     useEffect(() => {
         const getPosteo = async () => {
@@ -41,6 +42,7 @@ const PostDetail = () => {
                     }
 
                     setDataPost(post);
+                    setIdAuthor(post._id);
                     setCantidadLikes(post.likes);
                 }
             } catch (error) {
@@ -101,11 +103,12 @@ const PostDetail = () => {
     useEffect(() => {
         const obtenerMisDatos = async () => {
             try {
-                const result = await axios.get(`/api/detalles/bio/detalle/${dataPost?._id}`)
-
+                const result = await axios.get(`/api/detalles/bio/detalle/${idAuthor}`)
+                
                 if (result.status === 200 || result.status === 201) {
                     setMisDatos(result.data.result)
                     setLoadingSkeleton(false)
+                    console.log(dataPost.author)
                 }
 
             } catch (error) {
@@ -118,7 +121,8 @@ const PostDetail = () => {
             }
         }
         obtenerMisDatos()
-    }, [dataPost._id])
+    // }, [dataPost])
+    }, [idAuthor])
 
     const guardarEnFavoritos = async (e) => {
         e.preventDefault();
