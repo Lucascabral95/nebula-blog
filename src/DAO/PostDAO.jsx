@@ -24,6 +24,15 @@ class PostDAO {
         }
     }
 
+    async getPostsWithoutPopulate() {
+        try {
+            const posts = await Post.find();
+            return posts.reverse();
+        } catch (error) {
+            console.error("Error al obtener los posts:", error);
+        }
+    }
+
     async createPost(post) {
         try {
             const result = await Post.create(post);

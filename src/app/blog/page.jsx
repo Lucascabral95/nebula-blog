@@ -44,7 +44,6 @@ const Blog = () => {
     useEffect(() => {
         const getPosts = async () => {
             try {
-                // const result = await axios.get('/api/post')
                 const result = await axios.get('/api/post')
 
                 if (result.status === 200 || result.status === 201) {
