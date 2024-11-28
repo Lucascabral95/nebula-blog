@@ -32,10 +32,10 @@ const LinkBlogFeed = ({ id }) => {
 
     return (
         <>
-            <Link href={`/blog/perfil/${dataUser.user}`} className="imagen">
+            <Link href={`/blog/perfil/${dataUser?.user}`} className="imagen">
                 <Image src="/img/title-doraemon.jpg" className="imagen-imagen" alt="Perfil" width={20} height={20} />
             </Link>
-            <Link href={`/blog/perfil/${dataUser.user}`} className="nombre">
+            <Link href={`/blog/perfil/${dataUser?.user}`} className="nombre">
                 <p> {dataUser.nombreCompleto} </p>
             </Link>
         </>

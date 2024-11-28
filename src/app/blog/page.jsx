@@ -152,7 +152,9 @@ const Blog = () => {
                                 <div onClick={() => setSearch("")} className="posteoss" key={index}>
                                     <div className="perfil-nombre-categoria">
                                         <div className="perfil-nombre">
-                                            <LinkBlogFeed id={item?._id} />
+                                            {/* {item?._id &&
+                                                <LinkBlogFeed id={item?._id} />
+                                            } */}
                                         </div>
                                         <div className="pmc-categoria">
                                             <div className="section-cat">
