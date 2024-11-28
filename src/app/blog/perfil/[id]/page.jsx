@@ -67,29 +67,29 @@ const Perfil = ({ agregarDatos }) => {
         obtenerMisPublicaciones()
     }, [id])
 
-    // useEffect(() => {
-    //     const obtenerPosteosGuardados = async () => {
-    //         try {
-    //             const result = await axios.get(`/api/post/favoritas?id=${session?.user?.id}`)
+    useEffect(() => {
+        const obtenerPosteosGuardados = async () => {
+            try {
+                const result = await axios.get(`/api/post/favoritas?id=${session?.user?.id}`)
 
-    //             if (result.status === 200 || result.status === 201) {
-    //                 setPublicacionesGuardadas(result?.data?.result?.post)
+                if (result.status === 200 || result.status === 201) {
+                    setPublicacionesGuardadas(result?.data?.result?.post)
 
-    //                 console.log(result?.data?.result)
-    //             }
+                    console.log(result?.data?.result)
+                }
 
-    //         } catch (error) {
-    //             if (error.response) {
-    //                 const { status, data } = error.response
-    //                 console.error(`Error ${status}: ${data.error}`)
-    //             } else {
-    //                 console.error('Error de red o solicitud fallida:', error.message)
-    //             }
-    //         }
-    //     }
+            } catch (error) {
+                if (error.response) {
+                    const { status, data } = error.response
+                    console.error(`Error ${status}: ${data.error}`)
+                } else {
+                    console.error('Error de red o solicitud fallida:', error.message)
+                }
+            }
+        }
 
-    //     obtenerPosteosGuardados()
-    // }, [session])
+        obtenerPosteosGuardados()
+    }, [session])
 
     const eliminarDeFavoritos = async (id) => {
         try {

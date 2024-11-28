@@ -4,8 +4,8 @@ import PostDAO from "@/DAO/PostDAO";
 export async function GET() {
     
     try {
-        const post = await PostDAO.getPosts();
-        // const post = await PostDAO.getPostsWithoutPopulate();
+        // const post = await PostDAO.getPosts();
+        const post = await PostDAO.getPostsWithoutPopulate();
 
         if (!post) {
             return NextResponse.json({ error: "No se encontraron posts" }, { status: 404 });

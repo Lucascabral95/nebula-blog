@@ -27,8 +27,8 @@ class PostDAO {
 
     async getPostsWithoutPopulate() {
         try {
-            const posts = await Post.find();
-            return posts.reverse();
+            const posts = (await Post.find()).reverse();
+            return posts;
         } catch (error) {
             console.error("Error al obtener los posts:", error);
         }
