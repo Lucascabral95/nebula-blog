@@ -24,9 +24,7 @@ const PostDetail = () => {
     const [isOpenComment, setIsOpenComment] = useState(false);
     const [cantidadComentarios, setCantidadComentarios] = useState(0);
     const [cantidadLikes, setCantidadLikes] = useState(0);
-    const [misDatos, setMisDatos] = useState([]);
     const [loadingSkeleton, setLoadingSkeleton] = useState(true);
-    const [idAuthor, setIdAuthor] = useState("");
 
     useEffect(() => {
         const getPosteo = async () => {
@@ -42,8 +40,8 @@ const PostDetail = () => {
                     }
 
                     setDataPost(post);
-                    setIdAuthor(post._id);
                     setCantidadLikes(post.likes);
+                    setLoadingSkeleton(false);
                 }
             } catch (error) {
                 if (error.response) {
@@ -99,28 +97,6 @@ const PostDetail = () => {
             }
         }
     }
-
-    useEffect(() => {
-        const obtenerMisDatos = async () => {
-            try {
-                const result = await axios.get(`/api/detalles/bio/detalle/${idAuthor}`)
-                
-                if (result.status === 200 || result.status === 201) {
-                    setMisDatos(result.data.result)
-                    setLoadingSkeleton(false)
-                }
-
-            } catch (error) {
-                if (error.response) {
-                    const { status, data } = error.response
-                    console.error(`Error ${status}: ${data.error}`)
-                } else {
-                    console.error('Error de red o solicitud fallida:', error.message)
-                }
-            }
-        }
-        obtenerMisDatos()
-    }, [idAuthor])
 
     const guardarEnFavoritos = async (e) => {
         e.preventDefault();
@@ -239,7 +215,7 @@ const PostDetail = () => {
                         <ItemComment setIsOpenComment={setIsOpenComment} dataPosteo={dataPost} />
                     }
 
-                    <FooterInterior dataPost={dataPost} misDatos={misDatos} />
+                    <FooterInterior dataPost={dataPost} />
 
                     <Toaster />
 

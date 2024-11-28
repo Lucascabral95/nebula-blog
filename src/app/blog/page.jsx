@@ -10,8 +10,7 @@ import moment from "moment";
 import 'moment/locale/es';
 import useStore from '@/zustand'
 import { useRouter } from 'next/navigation'
-import Link from 'next/link'
-import Image from 'next/image'
+import LinkBlogFeed from '@/components/LinkBlogFeed/LinkBlogFeed'
 
 const Blog = () => {
     const { arrayDePosteos, setArrayDePosteos, search, setSearch } = useStore()
@@ -48,13 +47,7 @@ const Blog = () => {
                 const result = await axios.get('/api/post')
 
                 if (result.status === 200 || result.status === 201) {
-                    // setDataPosteos(result.data.posts)
-
-
-                    setDataPosteos(result.data.posts.map((post, index) => ({
-                        ...post,
-                        email: result.data.posts.map(post => post.author[0].email)[index]
-                    })));
+                    setDataPosteos(result.data.posts)
                 }
             } catch (error) {
                 if (error.response) {
@@ -155,32 +148,10 @@ const Blog = () => {
 
                         <div className="contenedor-ultimos-posteos">
                             {arrayAMostrar?.slice(0, posteosPorPagina).map((item, index) => (
-                                <div style={{ cursor: "pointer" }}
-                                    onClick={() => { setSearch(""); router.push(`/blog/posteo/${item._id}`) }} className="posteoss" key={index}>
+                                <div onClick={() => setSearch("")} className="posteoss" key={index}>
                                     <div className="perfil-nombre-categoria">
                                         <div className="perfil-nombre">
-                                            {/* <Link href={`/blog/perfil/${item?.author[0]?._id}`} className="imagen">
-                                                    <Image
-                                                        className="imagen-imagen"
-                                                        src={item?.author[0]?.avatar === "" || item?.author[0]?.avatar === null || item?.author[0]?.avatar === undefined ? "/img/title-doraemon.jpg" : item?.author[0]?.avatar}
-                                                        alt="Perfil" width={20} height={20}
-                                                    />
-                                                </Link>
-                                                 <Link href={`/blog/perfil/${item?.author[0]?._id}`} className="nombre">
-                                                    <p> {item?.author[0]?.email} </p>
-                                                </Link>  */}
-                                            <div className="imagen">
-                                                <Image
-                                                    className="imagen-imagen"
-                                                    src="/img/title-doraemon.jpg"
-                                                    alt="Perfil" width={20} height={20}
-                                                />
-                                            </div>
-                                            <div className="nombre">
-                                                <p> {item?.email} </p>
-                                            </div>
-
-
+                                            <LinkBlogFeed id={item?._id} />
                                         </div>
                                         <div className="pmc-categoria">
                                             <div className="section-cat">
@@ -188,7 +159,7 @@ const Blog = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="titulo-contenido">
+                                    <div style={{ cursor: "pointer" }} className="titulo-contenido" onClick={() => router.push(`/blog/posteo/${item._id}`)}>
                                         <div className="titulo-ultimo-posteo">
                                             <h3> {item.title} </h3>
                                         </div>

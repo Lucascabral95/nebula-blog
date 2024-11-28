@@ -2,16 +2,43 @@
 import "./FooterInterior.scss"
 import Image from "next/image"
 import Link from "next/link"
+import { useEffect, useState } from "react";
 import { FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
+import axios from "axios";
 
-const FooterInterior = ({ misDatos, dataPost }) => {
+const FooterInterior = ({ dataPost }) => {
+    const [misDatos, setMisDatos] = useState([]);
+
+    useEffect(() => {
+        const obtenerDetalles = async () => {
+            try {
+                const result = await axios.get(`/api/detalles/bio/detalle/${dataPost._id}`);
+
+                if (result.status === 200 || result.status === 201) {
+                    setMisDatos(result.data.result);
+                }
+
+            } catch (error) {
+                if (error.response) {
+                    const { status, data } = error.response;
+                    console.error(`Error ${status}: ${data.error}`);
+                } else {
+                    console.error('Error de red o solicitud fallida:', error.message);
+                }
+            }
+        }
+
+        obtenerDetalles();
+    }, [dataPost]);
 
     return (
         <footer className="footer-interior-oficial">
             <div className="contenedor-footer-interior-oficial">
 
+
                 <div className="footer-superior">
                     <div className="contenedor-footer-superior">
+
                         <div className="footer-foto">
                             <Link href={`/blog/perfil/${misDatos?.user}`} className="foto">
                                 <Image src={dataPost?.author?.avatar === "" || dataPost?.author?.avatar === undefined ? "/img/title-doraemon.jpg" : dataPost?.author?.avatar} width={70} height={70} alt="Perfil" className="footer-logo" />
