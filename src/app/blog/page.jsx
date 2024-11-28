@@ -147,7 +147,8 @@ const Blog = () => {
 
                             <div className="contenedor-ultimos-posteos">
                                 {arrayAMostrar.slice(0, posteosPorPagina).map((item, index) => (
-                                    <div onClick={() => setSearch("")} href={`/blog/posteo/${item._id}`} className="posteoss" key={index}>
+                                    // <div onClick={() => setSearch("")} href={`/blog/posteo/${item._id}`} className="posteoss" key={index}>
+                                    <div onClick={() => setSearch("")} className="posteoss" key={index}>
                                         <div className="perfil-nombre-categoria">
                                             <div className="perfil-nombre">
                                                 <Link href={`/blog/perfil/${item?.author[0]?._id}`} className="imagen">
