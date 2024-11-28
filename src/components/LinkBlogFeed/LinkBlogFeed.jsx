@@ -15,8 +15,6 @@ const LinkBlogFeed = ({ id }) => {
 
                 if (result.status === 200 || result.status === 201) {
                     setDataUser(result.data.result)
-
-                    console.log(result.data.result)
                 }
 
             } catch (error) {
@@ -30,7 +28,7 @@ const LinkBlogFeed = ({ id }) => {
         }
 
         getData()
-    }, [id])
+    }, [])
 
     return (
         <>
@@ -45,3 +43,4 @@ const LinkBlogFeed = ({ id }) => {
 }
 
 export default LinkBlogFeed
+

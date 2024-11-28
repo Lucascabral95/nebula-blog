@@ -36,7 +36,7 @@ class PostDAO {
 
     async getPostById(id) {
         try {
-            const post = await Post.findOne({ _id: id });
+            const post = await Post.findOne({ _id: id }).populate("author");
             return post;
         } catch (error) {
             console.error("Error al obtener el post:", error);

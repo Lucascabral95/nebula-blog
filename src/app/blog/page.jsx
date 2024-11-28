@@ -49,6 +49,7 @@ const Blog = () => {
                 if (result.status === 200 || result.status === 201) {
                     setDataPosteos(result.data.posts)
                 }
+
             } catch (error) {
                 if (error.response) {
                     const { status, data } = error.response

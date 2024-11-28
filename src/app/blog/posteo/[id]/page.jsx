@@ -29,18 +29,11 @@ const PostDetail = () => {
     useEffect(() => {
         const getPosteo = async () => {
             try {
-                const result = await axios.get("/api/post");
+                const result = await axios.get(`/api/post/${id}`);
 
                 if (result.status === 200 || result.status === 201) {
-                    const post = result.data.posts.find(post => post._id === id);
-
-                    if (!post) {
-                        window.location.href = "/blog/sdkfjnsjnfd";
-                        return;
-                    }
-
-                    setDataPost(post);
-                    setCantidadLikes(post.likes);
+                    setDataPost(result.data.result);
+                    setCantidadLikes(result.data.result.likes);
                     setLoadingSkeleton(false);
                 }
             } catch (error) {
