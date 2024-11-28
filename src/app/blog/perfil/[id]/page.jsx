@@ -45,15 +45,15 @@ const Perfil = ({ agregarDatos }) => {
         obtenerMisPublicaciones()
     }, [id])
 
+
     useEffect(() => {
-        const obtenerPosteosGuardados = async () => {
+        const obtenerMisPublicaciones = async () => {
             try {
-                const result = await axios.get(`/api/post/favoritas?id=${session?.user?.id}`)
+                const result = await axios.get(`/api/post`)
 
                 if (result.status === 200 || result.status === 201) {
-                    setPublicacionesGuardadas(result.data.result.post)
+                    setDataMyPosts(result.data.posts.filter(post => post.author[0]._id === id))
                 }
-
             } catch (error) {
                 if (error.response) {
                     const { status, data } = error.response
@@ -64,8 +64,32 @@ const Perfil = ({ agregarDatos }) => {
             }
         }
 
-        obtenerPosteosGuardados()
-    }, [session])
+        obtenerMisPublicaciones()
+    }, [id])
+
+    // useEffect(() => {
+    //     const obtenerPosteosGuardados = async () => {
+    //         try {
+    //             const result = await axios.get(`/api/post/favoritas?id=${session?.user?.id}`)
+
+    //             if (result.status === 200 || result.status === 201) {
+    //                 setPublicacionesGuardadas(result?.data?.result?.post)
+
+    //                 console.log(result?.data?.result)
+    //             }
+
+    //         } catch (error) {
+    //             if (error.response) {
+    //                 const { status, data } = error.response
+    //                 console.error(`Error ${status}: ${data.error}`)
+    //             } else {
+    //                 console.error('Error de red o solicitud fallida:', error.message)
+    //             }
+    //         }
+    //     }
+
+    //     obtenerPosteosGuardados()
+    // }, [session])
 
     const eliminarDeFavoritos = async (id) => {
         try {

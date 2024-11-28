@@ -59,7 +59,7 @@ class BioDAO {
     async getBioFromPostAuthor(id) {
         try {
             const post = await PostDAO.getPostById(id);
-            const result = await Bio.findOne({ user: post.author[0]._id });
+            const result = await Bio.findOne({ user: post.author });
             
             return result;
         } catch (error) {

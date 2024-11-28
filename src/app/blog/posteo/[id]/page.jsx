@@ -25,15 +25,18 @@ const PostDetail = () => {
     const [cantidadComentarios, setCantidadComentarios] = useState(0);
     const [cantidadLikes, setCantidadLikes] = useState(0);
     const [loadingSkeleton, setLoadingSkeleton] = useState(true);
+    const [dataUser, setDataUser] = useState([])
 
     useEffect(() => {
         const getPosteo = async () => {
             try {
                 const result = await axios.get(`/api/post/${id}`);
-
+                
+                
                 if (result.status === 200 || result.status === 201) {
-                    setDataPost(result.data.result);
-                    setCantidadLikes(result.data.result?.likes);
+                    setDataPost(result.data.result.post);
+                    setCantidadLikes(result.data.result?.post?.likes);
+                    setDataUser(result.data.result?.user)
                     setLoadingSkeleton(false);
                 }
             } catch (error) {
@@ -150,15 +153,17 @@ const PostDetail = () => {
                         </div>
 
                         <div className="detail-foto-fecha">
-                            {dataPost?.author?.[0]?._id &&
-                                <Link href={`/blog/perfil/${dataPost?.author[0]?._id}`} className="detail-imagen">
-                                    <Image src={dataPost?.author?.avatar === "" || dataPost?.author?.avatar === undefined ? "/img/title-doraemon.jpg" : dataPost?.author?.avatar} className="imagen-posteo" alt="imagen-posteo" width={44} height={44} />
+                            {dataUser._id &&
+                                <Link href={`/blog/perfil/${dataUser?._id}`} className="detail-imagen">
+                                    <Image src="/img/title-doraemon.jpg" className="imagen-posteo" alt="imagen-posteo" width={44} height={44} />
                                 </Link>
                             }
                             <div className="nombre-fecha">
                                 <div className="fecha-publicacion">
-                                    {dataPost?.author?.[0]?._id &&
-                                        <Link href={`/blog/perfil/${dataPost?.author[0]?._id}`} className="link-link"> {dataPost?.author?.[0]?.name ? dataPost?.author?.[0]?.name?.replace(/^(.)|\s(.)/g, s => s.toUpperCase()) : ""} </Link>
+                                    {dataUser._id &&
+                                        <Link href={`/blog/perfil/${dataUser._id}`} className="link-link"> 
+                                        {dataUser.name ? dataUser.name?.replace(/^(.)|\s(.)/g, s => s.toUpperCase()) : ""}
+                                         </Link>
                                     }
                                 </div>
                                 <div className="mi-nombre">

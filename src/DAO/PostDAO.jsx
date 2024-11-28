@@ -1,5 +1,6 @@
 import mongo from "@/services/mongoDB";
 import Post from "@/models/Post"
+import User from "@/models/User";
 
 class PostDAO {
     constructor() {
@@ -47,6 +48,26 @@ class PostDAO {
         try {
             const post = await Post.findOne({ _id: id }).populate("author");
             return post;
+        } catch (error) {
+            console.error("Error al obtener el post:", error);
+        }
+    }
+
+    async getPostByIdWithDataAndWithoutPopulate(id) {
+        try {
+            const post = await Post.findOne({ _id: id });
+            return post;
+        } catch (error) {
+            console.error("Error al obtener el post:", error);
+        }
+    }
+
+    async getPostByIdWithoutPopulate(id) {
+        try {
+            const post = await Post.findOne({ _id: id });
+            const user = await User.findOne({ _id: post.author });
+
+            return { post, user };
         } catch (error) {
             console.error("Error al obtener el post:", error);
         }

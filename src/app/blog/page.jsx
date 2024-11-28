@@ -10,7 +10,6 @@ import moment from "moment";
 import 'moment/locale/es';
 import useStore from '@/zustand'
 import { useRouter } from 'next/navigation'
-import LinkBlogFeed from '@/components/LinkBlogFeed/LinkBlogFeed'
 
 const Blog = () => {
     const { arrayDePosteos, setArrayDePosteos, search, setSearch } = useStore()
@@ -152,9 +151,6 @@ const Blog = () => {
                                 <div onClick={() => setSearch("")} className="posteoss" key={index}>
                                     <div className="perfil-nombre-categoria">
                                         <div className="perfil-nombre">
-                                            {/* {item?._id &&
-                                                <LinkBlogFeed id={item?._id} />
-                                            } */}
                                         </div>
                                         <div className="pmc-categoria">
                                             <div className="section-cat">

@@ -59,10 +59,6 @@ export async function DELETE() {
     }
 }
 
-
-
-
-
 export async function PUT(req) {
     const receptorId = new URL(req.url).searchParams.get('id');
 
