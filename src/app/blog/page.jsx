@@ -121,8 +121,10 @@ const Blog = () => {
     useEffect(() => {
         if (arrayDePosteos.length > 0 || search) {
             setArrayAMostrar(arrayDePosteos);
+            console.log(arrayDePosteos)
         } else {
             setArrayAMostrar(dataPosteos);
+            console.log(dataPosteos)
         }
     }, [arrayDePosteos, dataPosteos, search]);
 
@@ -159,21 +161,10 @@ const Blog = () => {
                                                         src={item?.author[0]?.avatar === "" || item?.author[0]?.avatar === null || item?.author[0]?.avatar === undefined ? "/img/title-doraemon.jpg" : item?.author[0]?.avatar}
                                                         alt="Perfil" width={20} height={20}
                                                     />
-                                                </Link> */}
-                                                <div className="imagen">
-                                                    <Image
-                                                        className="imagen-imagen"
-                                                        src={item?.author[0]?.avatar === "" || item?.author[0]?.avatar === null || item?.author[0]?.avatar === undefined ? "/img/title-doraemon.jpg" : item?.author[0]?.avatar}
-                                                        alt="Perfil" width={20} height={20}
-                                                    />
-                                                </div>
-                                                <div className="nombre">
+                                                </Link>
+                                                 <Link href={`/blog/perfil/${item?.author[0]?._id}`} className="nombre">
                                                     <p> {item?.author[0]?.email} </p>
-                                                </div>
-
-                                                {/* <Link href={`/blog/perfil/${item?.author[0]?._id}`} className="nombre">
-                                                    <p> {item?.author[0]?.email} </p>
-                                                </Link> */}
+                                                </Link>  */}
                                             </div>
                                             <div className="pmc-categoria">
                                                 <div className="section-cat">
