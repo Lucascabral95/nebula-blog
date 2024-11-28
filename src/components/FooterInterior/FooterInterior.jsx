@@ -12,7 +12,7 @@ const FooterInterior = ({ dataPost, id }) => {
     useEffect(() => {
         const obtenerDetalles = async () => {
             try {
-                const result = await axios.get(`/api/detalles/bio/detalle/${"6714706fc1e22c28531af361"}`);
+                const result = await axios.get(`/api/detalles/bio/detalle/${id}`);
 
                 if (result.status === 200 || result.status === 201) {
                     setMisDatos(result.data.result);
@@ -29,7 +29,7 @@ const FooterInterior = ({ dataPost, id }) => {
         }
 
         obtenerDetalles();
-    }, []);
+    }, [id]);
 
     return (
         <footer className="footer-interior-oficial">
