@@ -172,7 +172,7 @@ const Blog = () => {
                                             <div className="imagen">
                                                 <Image
                                                     className="imagen-imagen"
-                                                    src={item?.author[0]?.avatar === "" || item?.author[0]?.avatar === null || item?.author[0]?.avatar === undefined ? "/img/title-doraemon.jpg" : item?.author[0]?.avatar}
+                                                    src="/img/title-doraemon.jpg"
                                                     alt="Perfil" width={20} height={20}
                                                 />
                                             </div>
