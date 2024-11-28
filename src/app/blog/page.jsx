@@ -40,55 +40,26 @@ const Blog = () => {
         getCategorias()
     }, [])
 
-    // useEffect(() => {
-    //     const getPosts = async () => {
-    //         try {
-    //             const result = await axios.get('/api/post')
-
-    //             if (result.status === 200 || result.status === 201) {
-    //                 setDataPosteos(result.data.posts)
-    //             }
-    //         } catch (error) {
-    //             if (error.response) {
-    //                 const { status, data } = error.response
-    //                 console.error(`Error ${status}: ${data.error}`)
-    //             } else {
-    //                 console.error('Error de red o solicitud fallida:', error.message)
-    //             }
-    //         }
-    //     }
-
-    //     getPosts()
-    // }, [])
     useEffect(() => {
-        const fetchPostsWithRetry = async (retries = 3) => {
+        const getPosts = async () => {
             try {
-                const result = await axios.get('/api/post');
-    
+                const result = await axios.get('/api/post')
+
                 if (result.status === 200 || result.status === 201) {
-                    setDataPosteos(result.data.posts);
-                } else {
-                    console.warn('Respuesta inesperada del servidor:', result);
+                    setDataPosteos(result.data.posts)
                 }
             } catch (error) {
-                if (retries > 0) {
-                    console.warn(`Reintentando obtener los datos... Quedan ${retries} intentos.`);
-                    setTimeout(() => fetchPostsWithRetry(retries - 1), 1000); 
+                if (error.response) {
+                    const { status, data } = error.response
+                    console.error(`Error ${status}: ${data.error}`)
                 } else {
-                    if (error.response) {
-                        console.error(`Error ${error.response.status}: ${error.response.data.error}`);
-                    } else {
-                        console.error('Error de red o solicitud fallida:', error.message);
-                    }
+                    console.error('Error de red o solicitud fallida:', error.message)
                 }
             }
-        };
-    
-        fetchPostsWithRetry(); 
-    }, []);
+        }
 
-    
-
+        getPosts()
+    }, [])
 
     const buscarPorCategoria = async (item) => {
         if (item) {
@@ -176,7 +147,7 @@ const Blog = () => {
 
                             <div className="contenedor-ultimos-posteos">
                                 {arrayAMostrar.slice(0, posteosPorPagina).map((item, index) => (
-                                    <Link onClick={() => setSearch("")} href={`/blog/posteo/${item._id}`} className="posteoss" key={index}>
+                                    <div onClick={() => setSearch("")} href={`/blog/posteo/${item._id}`} className="posteoss" key={index}>
                                         <div className="perfil-nombre-categoria">
                                             <div className="perfil-nombre">
                                                 <Link href={`/blog/perfil/${item?.author[0]?._id}`} className="imagen">
@@ -217,7 +188,7 @@ const Blog = () => {
                                                 <p> {item.comments.length} </p>
                                             </div>
                                         </div>
-                                    </Link>
+                                    </div>
                                 ))}
                             </div>
                             {cantidadPaginas > paginaActual && arrayAMostrar.length > 0 &&
