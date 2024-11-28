@@ -4,6 +4,7 @@ import Header from "../Header/Header"
 import SearchFull from "../Header/SearchFull"
 import "./EstructuraCuerpo.scss"
 import useStore from "@/zustand"
+import ClientOnly from '@/components/ClientOnly/ClientOnly'
 
 const EstructuraCuerpo = ({ children, childrenDetail, detalle }) => {
     const { isOpenSearchFull, setIsOpenSearchFull } = useStore();
@@ -28,30 +29,32 @@ const EstructuraCuerpo = ({ children, childrenDetail, detalle }) => {
 
 
     return (
-        <div className='estructura-cuerpo'>
-            <div className="contenedor-estructura-cuerpo">
+        <ClientOnly>
+            <div className='estructura-cuerpo'>
+                <div className="contenedor-estructura-cuerpo">
 
-                <Header />
+                    <Header />
 
-                {isOpenSearchFull
-                    ?
-                    <SearchFull />
-                    :
-                    <>
-                        <main className="main-original">
-                            {children}
-                        </main>
-
-                        {detalle &&
-                            <main className="main-secundario">
-                                {childrenDetail}
+                    {isOpenSearchFull
+                        ?
+                        <SearchFull />
+                        :
+                        <>
+                            <main className="main-original">
+                                {children}
                             </main>
-                        }
-                    </>
-                }
 
+                            {detalle &&
+                                <main className="main-secundario">
+                                    {childrenDetail}
+                                </main>
+                            }
+                        </>
+                    }
+
+                </div>
             </div>
-        </div>
+        </ClientOnly>
     )
 }
 

@@ -17,8 +17,7 @@ class PostDAO {
 
     async getPosts() {
         try {
-            // const posts = await Post.find({}).populate("author", "name email avatar createdAt");
-            const posts = await Post.find({}).populate("author");
+            const posts = await Post.find({}).populate("author", "_id name email avatar createdAt");
             return posts.reverse();
         } catch (error) {
             console.error("Error al obtener los posts:", error);
