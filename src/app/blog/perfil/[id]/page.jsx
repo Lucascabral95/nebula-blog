@@ -23,36 +23,17 @@ const Perfil = ({ agregarDatos }) => {
     const [seccionActual, setSeccionActual] = useState("publicaciones")
     const { data: session } = useSession()
     const [publicacionesGuardadas, setPublicacionesGuardadas] = useState([])
+    const [datosDelUsuario, setDatosDelUsuario] = useState([])
 
     useEffect(() => {
         const obtenerMisPublicaciones = async () => {
             try {
-                const result = await axios.get(`/api/post`)
+                const result = await axios.get(`/api/post/posteos/${id}`)
 
                 if (result.status === 200 || result.status === 201) {
-                    setDataMyPosts(result.data.posts.filter(post => post.author[0]._id === id))
-                }
-            } catch (error) {
-                if (error.response) {
-                    const { status, data } = error.response
-                    console.error(`Error ${status}: ${data.error}`)
-                } else {
-                    console.error('Error de red o solicitud fallida:', error.message)
-                }
-            }
-        }
-
-        obtenerMisPublicaciones()
-    }, [id])
-
-
-    useEffect(() => {
-        const obtenerMisPublicaciones = async () => {
-            try {
-                const result = await axios.get(`/api/post`)
-
-                if (result.status === 200 || result.status === 201) {
-                    setDataMyPosts(result.data.posts.filter(post => post.author[0]._id === id))
+                    setDataMyPosts(result.data.result.posts)
+                    setDatosDelUsuario(result.data.result.user[0])
+                    console.log(result.data.result.user[0])
                 }
             } catch (error) {
                 if (error.response) {
@@ -74,8 +55,6 @@ const Perfil = ({ agregarDatos }) => {
 
                 if (result.status === 200 || result.status === 201) {
                     setPublicacionesGuardadas(result?.data?.result?.post)
-
-                    console.log(result?.data?.result)
                 }
 
             } catch (error) {
@@ -127,7 +106,7 @@ const Perfil = ({ agregarDatos }) => {
                     <>
                         <div className="perfil-titulo">
                             <h2 className='perfil-titulo-texto'>
-                                {dataMyPosts[0]?.author[0]?.name.replace(/^\w/, (c) => c.toUpperCase())}
+                                {datosDelUsuario.name}
                             </h2>
                         </div>
                         <div className="secciones-perfil">
@@ -159,23 +138,23 @@ const Perfil = ({ agregarDatos }) => {
                         {seccionActual === "publicaciones"
                             ?
                             <div className="contenedor-ultimos-posteos">
-                                {dataMyPosts.length === 0 &&
+                                {dataMyPosts?.length === 0 &&
                                     <div className="tit">
                                         <h2 className="tit-tiulo"> No realizaste ninguna publicación </h2>
                                     </div>
                                 }
-                                {dataMyPosts.map((item, index) => (
+                                {dataMyPosts?.map((item, index) => (
                                     <Link href={`/blog/posteo/${item._id}`} className="posteoss" key={index}>
                                         <div className="perfil-nombre-categoria">
                                             <div className="perfil-nombre">
-                                                <Link href={`/blog/perfil/${item.author[0]._id}`} className="imagen">
+                                                <Link href={`/blog/perfil/${item.author}`} className="imagen">
                                                     <Image
                                                         className="imagen-imagen"
-                                                        src={item?.author[0]?.avatar === "" || item?.author[0].avatar === null || item?.author[0].avatar === undefined ? "/img/title-doraemon.jpg" : item.author[0].avatar}
+                                                        src="/img/title-doraemon.jpg"
                                                         alt="Perfil" width={20} height={20}
                                                     />
                                                 </Link>
-                                                <Link href={`/blog/perfil/${item.author[0]._id}`} className="nombre">
+                                                <Link href={`/blog/perfil/${item._id}`} className="nombre">
                                                     <p> {item.author[0].email} </p>
                                                 </Link>
                                             </div>
@@ -212,10 +191,10 @@ const Perfil = ({ agregarDatos }) => {
                             : seccionActual === "acerca-de-mi" &&
                             <div className="contenedor-contenido-perfil">
                                 <div className="about">
-                                    <p> Miembro de Nebula Blog desde el {moment(dataMyPosts[0]?.author[0]?.createdAt).format('LL')} </p>
+                                    <p> Miembro de Nebula Blog desde el {moment(datosDelUsuario.createdAt).format('LL')} </p>
                                 </div>
                                 <div className="about-publicaciones" onClick={() => setSeccionActual("publicaciones")}>
-                                    <p> {dataMyPosts.length} publicaciones </p>
+                                    <p> {dataMyPosts?.length} publicaciones </p>
                                 </div>
                             </div>
                         }
@@ -291,9 +270,9 @@ const Perfil = ({ agregarDatos }) => {
 
                 recomendaciones={
                     <>
-                        <PerfilDeDatos dataMyPosts={dataMyPosts} id={id} />
+                        <PerfilDeDatos dataMyPosts={dataMyPosts} datosDelUsuario={datosDelUsuario} id={id} />
                         {agregarDatos &&
-                            <Link href={`/blog/mi-perfil/${dataMyPosts[0]?.author[0]?._id}/ajustes`} className="editar-perfil">
+                            <Link href={`/blog/mi-perfil/${dataMyPosts._id}/ajustes`} className="editar-perfil">
                                 <p> Editar perfil </p>
                             </Link>
                         }

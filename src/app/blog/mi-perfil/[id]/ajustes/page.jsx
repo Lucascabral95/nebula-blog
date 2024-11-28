@@ -34,7 +34,7 @@ const Ajustes = () => {
     useEffect(() => {
         const obtenerDatos = async () => {
             try {
-                const result = await axios.get(`/api/detalles/direccion?id=${sesion?.user?.id}`)
+                const result = await axios.get(`/api/detalles/direccion/${sesion?.user?.id}`)
 
                 if (result.status === 200 || result.status === 201) {
                     setDireccionIngresada(result.data.result.provincia + ", " + result.data.result.pais)

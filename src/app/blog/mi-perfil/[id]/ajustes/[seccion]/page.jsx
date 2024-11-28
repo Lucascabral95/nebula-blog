@@ -30,6 +30,7 @@ const SeccionUsuario = () => {
     const [direccionIngresada, setDireccionIngresada] = useState("")
     const [dataMyPosts, setDataMyPosts] = useState([])
     const [publicacionesGuardadas, setPublicacionesGuardadas] = useState([])
+    const [datosDelUsuario, setDatosDelUsuario] = useState([])
 
     useEffect(() => {
         const obtenerDatos = async () => {
@@ -50,10 +51,12 @@ const SeccionUsuario = () => {
     useEffect(() => {
         const obtenerMisPublicaciones = async () => {
             try {
-                const result = await axios.get(`/api/post`)
+                const result = await axios.get(`/api/post/posteos/${id}`)
 
                 if (result.status === 200 || result.status === 201) {
-                    setDataMyPosts(result.data.posts.filter(post => post.author[0]._id === id))
+                    setDataMyPosts(result.data.result.posts)
+                    setDatosDelUsuario(result.data.result.user[0])
+                    console.log(result.data.result.user[0])
                 }
             } catch (error) {
                 if (error.response) {
@@ -345,7 +348,7 @@ const SeccionUsuario = () => {
 
                 recomendaciones={
                     <>
-                        <PerfilDeDatos dataMyPosts={dataMyPosts} id={id} />
+                        <PerfilDeDatos dataMyPosts={dataMyPosts} datosDelUsuario={datosDelUsuario} id={id} />
                     </>
                 }
             />

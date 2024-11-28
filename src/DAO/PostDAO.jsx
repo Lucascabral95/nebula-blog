@@ -72,6 +72,17 @@ class PostDAO {
             console.error("Error al obtener el post:", error);
         }
     }
+    
+    async getPostByUserIdWithoutPopulate(id) {
+        try {
+            const posts = await Post.find({ "author": id })
+            const user = await User.find({ "_id": { $in: posts.map(post => post.author) } });
+
+            return {posts, user};
+        } catch (error) {
+            console.error("Error al obtener el post:", error);
+        }
+    }
 
     async getPostBySlug(slug) {
         try {

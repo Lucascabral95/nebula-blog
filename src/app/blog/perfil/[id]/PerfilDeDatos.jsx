@@ -6,7 +6,7 @@ import { MdEmail } from "react-icons/md";
 import Image from "next/image";
 import axios from "axios";
 
-const PerfilDeDatos = ({ dataMyPosts, id }) => {
+const PerfilDeDatos = ({ dataMyPosts, datosDelUsuario, id }) => {
     const { data: session } = useSession()
     const [dataBio, setDataBio] = useState([])
     const [dataDireccion, setDataDireccion] = useState([])
@@ -44,7 +44,7 @@ const PerfilDeDatos = ({ dataMyPosts, id }) => {
         <>
             <div className="contenedor-foto-perfil">
                 <div className="foto-foto">
-                    <Image src={dataMyPosts[0]?.author[0]?.avatar === "" || dataMyPosts[0]?.author[0].avatar === null || dataMyPosts[0]?.author[0].avatar === undefined ? "/img/title-doraemon.jpg" : dataMyPosts[0].author[0].avatar}
+                    <Image src="/img/title-doraemon.jpg"
                         alt="Perfil"
                         width={88}
                         height={88}
@@ -53,15 +53,15 @@ const PerfilDeDatos = ({ dataMyPosts, id }) => {
                 </div>
             </div>
             <div className="perfil-nombre">
-                <p> {dataBio?.nombreCompleto ? dataBio?.nombreCompleto : dataMyPosts[0]?.author[0]?.name ? dataMyPosts[0]?.author[0]?.name[0].toUpperCase() + dataMyPosts[0]?.author[0]?.name.slice(1) : ""} </p>
+                <p> {datosDelUsuario?.name} </p>
             </div>
             <div className="publish">
                 <p>
-                    {dataMyPosts.length === 0
+                    {dataMyPosts?.length === 0
                         ? "Sin publicaciones"
-                        : dataMyPosts.length === 1
+                        : dataMyPosts?.length === 1
                             ? "1 publicacion"
-                            : dataMyPosts.length + " publicaciones"
+                            : dataMyPosts?.length + " publicaciones"
                     }
                 </p>
             </div>
