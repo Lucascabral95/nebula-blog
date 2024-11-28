@@ -153,16 +153,27 @@ const Blog = () => {
                                     onClick={() => {setSearch(""); router.push(`/blog/posteo/${item._id}`)}} className="posteoss" key={index}>
                                         <div className="perfil-nombre-categoria">
                                             <div className="perfil-nombre">
-                                                <Link href={`/blog/perfil/${item?.author[0]?._id}`} className="imagen">
+                                                {/* <Link href={`/blog/perfil/${item?.author[0]?._id}`} className="imagen">
                                                     <Image
                                                         className="imagen-imagen"
                                                         src={item?.author[0]?.avatar === "" || item?.author[0]?.avatar === null || item?.author[0]?.avatar === undefined ? "/img/title-doraemon.jpg" : item?.author[0]?.avatar}
                                                         alt="Perfil" width={20} height={20}
                                                     />
-                                                </Link>
-                                                <Link href={`/blog/perfil/${item?.author[0]?._id}`} className="nombre">
+                                                </Link> */}
+                                                <div className="imagen">
+                                                    <Image
+                                                        className="imagen-imagen"
+                                                        src={item?.author[0]?.avatar === "" || item?.author[0]?.avatar === null || item?.author[0]?.avatar === undefined ? "/img/title-doraemon.jpg" : item?.author[0]?.avatar}
+                                                        alt="Perfil" width={20} height={20}
+                                                    />
+                                                </div>
+                                                <div className="nombre">
                                                     <p> {item?.author[0]?.email} </p>
-                                                </Link>
+                                                </div>
+
+                                                {/* <Link href={`/blog/perfil/${item?.author[0]?._id}`} className="nombre">
+                                                    <p> {item?.author[0]?.email} </p>
+                                                </Link> */}
                                             </div>
                                             <div className="pmc-categoria">
                                                 <div className="section-cat">

@@ -108,7 +108,6 @@ const PostDetail = () => {
                 if (result.status === 200 || result.status === 201) {
                     setMisDatos(result.data.result)
                     setLoadingSkeleton(false)
-                    console.log(dataPost.author)
                 }
 
             } catch (error) {
@@ -121,7 +120,6 @@ const PostDetail = () => {
             }
         }
         obtenerMisDatos()
-    // }, [dataPost])
     }, [idAuthor])
 
     const guardarEnFavoritos = async (e) => {
