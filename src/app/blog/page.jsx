@@ -10,7 +10,8 @@ import moment from "moment";
 import 'moment/locale/es';
 import useStore from '@/zustand'
 import { useRouter } from 'next/navigation'
-import LinkBlogFeed from '@/components/LinkBlogFeed/LinkBlogFeed'
+import Link from 'next/link'
+import Image from 'next/image'
 
 const Blog = () => {
     const { arrayDePosteos, setArrayDePosteos, search, setSearch } = useStore()
@@ -47,7 +48,13 @@ const Blog = () => {
                 const result = await axios.get('/api/post')
 
                 if (result.status === 200 || result.status === 201) {
-                    setDataPosteos(result.data.posts)
+                    // setDataPosteos(result.data.posts)
+
+
+                    setDataPosteos(result.data.posts.map((post, index) => ({
+                        ...post,
+                        email: result.data.posts.map(post => post.author[0].email)[index]
+                    })));
                 }
             } catch (error) {
                 if (error.response) {
@@ -133,26 +140,26 @@ const Blog = () => {
     };
 
     return (
-            <EstructuraCuerpo>
-                <EstructuraCuerpoInterior
-                    noticias={
-                        <>
-                            <div className="ultimas-noticias">
-                                {search !== ""
-                                    ?
-                                    <h4 className="text-ultimas-noticias"> Resultados de <span style={{ color: "var(--font-color-principal-dentro)" }}> {search} </span> </h4>
-                                    :
-                                    <h4 className="text-ultimas-noticias"> Últimas publicaciones </h4>
-                                }
-                            </div>
+        <EstructuraCuerpo>
+            <EstructuraCuerpoInterior
+                noticias={
+                    <>
+                        <div className="ultimas-noticias">
+                            {search !== ""
+                                ?
+                                <h4 className="text-ultimas-noticias"> Resultados de <span style={{ color: "var(--font-color-principal-dentro)" }}> {search} </span> </h4>
+                                :
+                                <h4 className="text-ultimas-noticias"> Últimas publicaciones </h4>
+                            }
+                        </div>
 
-                            <div className="contenedor-ultimos-posteos">
-                                {arrayAMostrar.slice(0, posteosPorPagina).map((item, index) => (
-                                    <div style={{ cursor: "pointer" }} 
-                                    onClick={() => {setSearch(""); router.push(`/blog/posteo/${item._id}`)}} className="posteoss" key={index}>
-                                        <div className="perfil-nombre-categoria">
-                                            <div className="perfil-nombre">
-                                                {/* <Link href={`/blog/perfil/${item?.author[0]?._id}`} className="imagen">
+                        <div className="contenedor-ultimos-posteos">
+                            {arrayAMostrar?.slice(0, posteosPorPagina).map((item, index) => (
+                                <div style={{ cursor: "pointer" }}
+                                    onClick={() => { setSearch(""); router.push(`/blog/posteo/${item._id}`) }} className="posteoss" key={index}>
+                                    <div className="perfil-nombre-categoria">
+                                        <div className="perfil-nombre">
+                                            {/* <Link href={`/blog/perfil/${item?.author[0]?._id}`} className="imagen">
                                                     <Image
                                                         className="imagen-imagen"
                                                         src={item?.author[0]?.avatar === "" || item?.author[0]?.avatar === null || item?.author[0]?.avatar === undefined ? "/img/title-doraemon.jpg" : item?.author[0]?.avatar}
@@ -162,62 +169,73 @@ const Blog = () => {
                                                  <Link href={`/blog/perfil/${item?.author[0]?._id}`} className="nombre">
                                                     <p> {item?.author[0]?.email} </p>
                                                 </Link>  */}
-                                                <LinkBlogFeed avatar={item?.author[0]?.avatar} email={item?.author[0]?.email} />
+                                            <div className="imagen">
+                                                <Image
+                                                    className="imagen-imagen"
+                                                    src={item?.author[0]?.avatar === "" || item?.author[0]?.avatar === null || item?.author[0]?.avatar === undefined ? "/img/title-doraemon.jpg" : item?.author[0]?.avatar}
+                                                    alt="Perfil" width={20} height={20}
+                                                />
                                             </div>
-                                            <div className="pmc-categoria">
-                                                <div className="section-cat">
-                                                    <p>  {item.categories} </p>
-                                                </div>
+                                            <div className="nombre">
+                                                <p> {item?.email} </p>
                                             </div>
-                                        </div>
-                                        <div className="titulo-contenido">
-                                            <div className="titulo-ultimo-posteo">
-                                                <h3> {item.title} </h3>
-                                            </div>
-                                            <div className="descripcion-ultimo-posteo">
-                                                <p dangerouslySetInnerHTML={{ __html: formatContent(item.content) }} />
-                                            </div>
-                                        </div>
-                                        <div className="likes-comentarios">
-                                            <div className="fecha">
-                                                <p> {moment(item.createdAt).fromNow()} </p>
-                                            </div>
-                                            <div className="fecha">
-                                                <FcLike className="icon-like-com" />
-                                                <p> {item.likes} </p>
-                                            </div>
-                                            <div className="fecha">
-                                                <FaCommentAlt className="icon-like-com" />
-                                                <p> {item.comments.length} </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                            {cantidadPaginas > paginaActual && arrayAMostrar.length > 0 &&
-                                <div className="boton-de-mas" onClick={siguientePagina}>
-                                    <button> Ver más </button>
-                                </div>
-                            }
-                        </>
-                    }
 
-                    recomendaciones={
-                        <>
-                            <div className="temas-recomendados">
-                                <p> Temas recomendados </p>
-                            </div>
-                            <div className="temas">
-                                {categorias.map((item, index) => (
-                                    <div className="tema" key={index} onClick={() => buscarPorCategoria(item.name)}>
-                                        <p> {item.name} </p>
+
+                                        </div>
+                                        <div className="pmc-categoria">
+                                            <div className="section-cat">
+                                                <p>  {item.categories} </p>
+                                            </div>
+                                        </div>
                                     </div>
-                                ))}
+                                    <div className="titulo-contenido">
+                                        <div className="titulo-ultimo-posteo">
+                                            <h3> {item.title} </h3>
+                                        </div>
+                                        <div className="descripcion-ultimo-posteo">
+                                            <p dangerouslySetInnerHTML={{ __html: formatContent(item.content) }} />
+                                        </div>
+                                    </div>
+                                    <div className="likes-comentarios">
+                                        <div className="fecha">
+                                            <p> {moment(item.createdAt).fromNow()} </p>
+                                        </div>
+                                        <div className="fecha">
+                                            <FcLike className="icon-like-com" />
+                                            <p> {item.likes} </p>
+                                        </div>
+                                        <div className="fecha">
+                                            <FaCommentAlt className="icon-like-com" />
+                                            <p> {item.comments.length} </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                        {cantidadPaginas > paginaActual && arrayAMostrar.length > 0 &&
+                            <div className="boton-de-mas" onClick={siguientePagina}>
+                                <button> Ver más </button>
                             </div>
-                        </>
-                    }
-                />
-            </EstructuraCuerpo>
+                        }
+                    </>
+                }
+
+                recomendaciones={
+                    <>
+                        <div className="temas-recomendados">
+                            <p> Temas recomendados </p>
+                        </div>
+                        <div className="temas">
+                            {categorias.map((item, index) => (
+                                <div className="tema" key={index} onClick={() => buscarPorCategoria(item.name)}>
+                                    <p> {item.name} </p>
+                                </div>
+                            ))}
+                        </div>
+                    </>
+                }
+            />
+        </EstructuraCuerpo>
     )
 }
 
