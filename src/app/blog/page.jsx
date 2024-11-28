@@ -4,14 +4,13 @@ import "./Blog.scss"
 import EstructuraCuerpoInterior from '@/components/EstructuraCuerpoInterior/EstructuraCuerpoInterior'
 import axios from "axios"
 import { useEffect, useState } from "react"
-import Image from "next/image"
-import Link from "next/link"
 import { FcLike } from "react-icons/fc";
 import { FaCommentAlt } from "react-icons/fa";
 import moment from "moment";
 import 'moment/locale/es';
 import useStore from '@/zustand'
 import { useRouter } from 'next/navigation'
+import LinkBlogFeed from '@/components/LinkBlogFeed/LinkBlogFeed'
 
 const Blog = () => {
     const { arrayDePosteos, setArrayDePosteos, search, setSearch } = useStore()
@@ -121,10 +120,8 @@ const Blog = () => {
     useEffect(() => {
         if (arrayDePosteos.length > 0 || search) {
             setArrayAMostrar(arrayDePosteos);
-            console.log(arrayDePosteos)
         } else {
             setArrayAMostrar(dataPosteos);
-            console.log(dataPosteos)
         }
     }, [arrayDePosteos, dataPosteos, search]);
 
@@ -165,6 +162,7 @@ const Blog = () => {
                                                  <Link href={`/blog/perfil/${item?.author[0]?._id}`} className="nombre">
                                                     <p> {item?.author[0]?.email} </p>
                                                 </Link>  */}
+                                                <LinkBlogFeed avatar={item?.author[0]?.avatar} email={item?.author[0]?.email} />
                                             </div>
                                             <div className="pmc-categoria">
                                                 <div className="section-cat">
