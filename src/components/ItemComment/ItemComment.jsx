@@ -10,11 +10,35 @@ import Image from "next/image";
 import moment from "moment";
 import 'moment/locale/es';
 
-const ItemComment = ({ setIsOpenComment, dataPosteo }) => {
+const ItemComment = ({ setIsOpenComment, dataPosteo, id }) => {
     const [dataComentarios, setDataComentarios] = useState([]);
     const [comentario, setComentario] = useState("");
     const [change, setChange] = useState(false);
     const { data: session } = useSession();
+
+    useEffect(() => {
+        const getData = async () => {
+            try {
+                // const result = await axios.get(`/api/comment?id=${dataPosteo._id}`);
+                const result = await axios.get(`/api/comment?id=${id}`);
+
+                if (result.status === 200) {
+                    setDataComentarios(result.data.comments);
+                }
+            } catch (error) {
+                if (error.response) {
+                    const { status, data } = error.response;
+                    console.error(`Error ${status}: ${data.error}`);
+                } else {
+                    console.error('Error de red o solicitud fallida:', error.message);
+                }
+            }
+        };
+
+        getData();
+    // }, [dataPosteo, change]);
+    }, [id, change]);
+
 
     const comentar = async (e) => {
         e.preventDefault();
@@ -38,27 +62,6 @@ const ItemComment = ({ setIsOpenComment, dataPosteo }) => {
             }
         }
     };
-
-    useEffect(() => {
-        const getData = async () => {
-            try {
-                const result = await axios.get(`/api/comment?id=${dataPosteo._id}`);
-
-                if (result.status === 200) {
-                    setDataComentarios(result.data.comments);
-                }
-            } catch (error) {
-                if (error.response) {
-                    const { status, data } = error.response;
-                    console.error(`Error ${status}: ${data.error}`);
-                } else {
-                    console.error('Error de red o solicitud fallida:', error.message);
-                }
-            }
-        };
-
-        getData();
-    }, [dataPosteo, change]);
 
     const darLike = async (idComment) => {
         try {

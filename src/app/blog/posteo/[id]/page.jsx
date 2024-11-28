@@ -205,7 +205,7 @@ const PostDetail = () => {
                     </div>
 
                     {isOpenComment &&
-                        <ItemComment setIsOpenComment={setIsOpenComment} dataPosteo={dataPost} />
+                        <ItemComment setIsOpenComment={setIsOpenComment} dataPosteo={dataPost} id={id} />
                     }
 
                     <FooterInterior dataPost={dataPost} id={id} />

@@ -17,7 +17,7 @@ class CommentDAO {
 
     async getCommentsByPostID(id) {
         try {
-            const comments = (await Comment.find({ post: id }).populate("user", "name email avatar"));
+            const comments = (await Comment.find({ post: id }).populate("user"));
             return comments;
         } catch (error) {
             console.error("Error al obtener los comentarios:", error);
