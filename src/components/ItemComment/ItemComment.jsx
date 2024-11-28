@@ -46,7 +46,6 @@ const ItemComment = ({ setIsOpenComment, dataPosteo }) => {
 
                 if (result.status === 200) {
                     setDataComentarios(result.data.comments);
-                    console.log(result.data.comments);
                 }
             } catch (error) {
                 if (error.response) {
@@ -66,7 +65,6 @@ const ItemComment = ({ setIsOpenComment, dataPosteo }) => {
             const result = await axios.put(`/api/comment?id=${idComment}`);
 
             if (result.status === 200 || result.status === 201) {
-                console.log("Like dado con exito");
                 setChange(!change);
             }
 

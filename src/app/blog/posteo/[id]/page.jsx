@@ -33,7 +33,7 @@ const PostDetail = () => {
 
                 if (result.status === 200 || result.status === 201) {
                     setDataPost(result.data.result);
-                    setCantidadLikes(result.data.result.likes);
+                    setCantidadLikes(result.data.result?.likes);
                     setLoadingSkeleton(false);
                 }
             } catch (error) {
@@ -208,7 +208,7 @@ const PostDetail = () => {
                         <ItemComment setIsOpenComment={setIsOpenComment} dataPosteo={dataPost} />
                     }
 
-                    <FooterInterior dataPost={dataPost} />
+                    <FooterInterior dataPost={dataPost} id={id} />
 
                     <Toaster />
 

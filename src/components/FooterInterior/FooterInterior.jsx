@@ -6,13 +6,13 @@ import { useEffect, useState } from "react";
 import { FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
 import axios from "axios";
 
-const FooterInterior = ({ dataPost }) => {
+const FooterInterior = ({ dataPost, id }) => {
     const [misDatos, setMisDatos] = useState([]);
 
     useEffect(() => {
         const obtenerDetalles = async () => {
             try {
-                const result = await axios.get(`/api/detalles/bio/detalle/${dataPost._id}`);
+                const result = await axios.get(`/api/detalles/bio/detalle/${"6714706fc1e22c28531af361"}`);
 
                 if (result.status === 200 || result.status === 201) {
                     setMisDatos(result.data.result);
@@ -29,7 +29,7 @@ const FooterInterior = ({ dataPost }) => {
         }
 
         obtenerDetalles();
-    }, [dataPost]);
+    }, []);
 
     return (
         <footer className="footer-interior-oficial">

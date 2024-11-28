@@ -96,30 +96,6 @@ const Perfil = ({ agregarDatos }) => {
         return content;
     };
 
-
-
-
-useEffect(() => {
-    const validadExisteciaCliente = async () => {
-        try {
-            const result = await axios.get(`/api/register?id=${id}`)
-
-            if (result.status === 200 || result.status === 201) {
-                console.log(result.data.result)
-            }
-        } catch (error) {
-             if (error.response) {
-                const { status, data } = error.response
-                console.error(`Error ${status}: ${data.error}`)
-            } else {
-                console.error('Error de red o solicitud fallida:', error.message)
-            }
-        }
-    }
-
-    validadExisteciaCliente()
-}, [])
-
     return (
         <EstructuraCuerpo>
             <EstructuraCuerpoInterior
