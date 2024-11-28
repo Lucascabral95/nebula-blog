@@ -11,6 +11,7 @@ import { FaCommentAlt } from "react-icons/fa";
 import moment from "moment";
 import 'moment/locale/es';
 import useStore from '@/zustand'
+import { useRouter } from 'next/navigation'
 
 const Blog = () => {
     const { arrayDePosteos, setArrayDePosteos, search, setSearch } = useStore()
@@ -20,6 +21,7 @@ const Blog = () => {
     const [cantidadPaginas, setCantidadPaginas] = useState(0)
     const [posteosPorPagina, setPosteosPorPagina] = useState(8)
     const [paginaActual, setPaginaActual] = useState(1)
+    const router = useRouter()
 
     useEffect(() => {
         const getCategorias = async () => {
@@ -148,7 +150,8 @@ const Blog = () => {
                             <div className="contenedor-ultimos-posteos">
                                 {arrayAMostrar.slice(0, posteosPorPagina).map((item, index) => (
                                     // <div onClick={() => setSearch("")} href={`/blog/posteo/${item._id}`} className="posteoss" key={index}>
-                                    <div onClick={() => setSearch("")} className="posteoss" key={index}>
+                                    <div style={{ cursor: "pointer" }} 
+                                    onClick={() => {setSearch(""); router.push(`/blog/posteo/${item._id}`)}} className="posteoss" key={index}>
                                         <div className="perfil-nombre-categoria">
                                             <div className="perfil-nombre">
                                                 <Link href={`/blog/perfil/${item?.author[0]?._id}`} className="imagen">
