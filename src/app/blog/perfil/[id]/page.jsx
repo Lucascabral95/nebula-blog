@@ -17,7 +17,7 @@ import { toast, Toaster } from 'react-hot-toast'
 
 import { FaTrash } from "react-icons/fa";
 
-const Perfil = ({ agregarDatos }) => {
+const Perfil = () => {
     const { id } = useParams()
     const [dataMyPosts, setDataMyPosts] = useState([])
     const [seccionActual, setSeccionActual] = useState("publicaciones")
@@ -271,7 +271,7 @@ const Perfil = ({ agregarDatos }) => {
                 recomendaciones={
                     <>
                         <PerfilDeDatos dataMyPosts={dataMyPosts} datosDelUsuario={datosDelUsuario} id={id} />
-                        {agregarDatos &&
+                        {id === session?.user?.id &&
                             <Link href={`/blog/mi-perfil/${dataMyPosts._id}/ajustes`} className="editar-perfil">
                                 <p> Editar perfil </p>
                             </Link>
