@@ -10,7 +10,6 @@ export async function GET(req, { params }) {
         }
 
         const post = await PostDAO.getPostByIdWithoutPopulate(id);
-        // const post = await PostDAO.getPostById(id);
         
         return NextResponse.json({ result: post, status: 200 });
     } catch (error) {
