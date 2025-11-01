@@ -1,62 +1,32 @@
-"use client"
-import EstructuraCuerpo from "@/components/EstructuraCuerpo/EstructuraCuerpo"
-import "./App.scss"
-import Image from "next/image"
-import Link from "next/link"
-import { useSession } from "next-auth/react"
+'use client'
+
+import EstructuraCuerpo from '@/components/EstructuraCuerpo/EstructuraCuerpo'
+import { NotFoundContent } from '@/presentation/components/NotFoundContent'
+import { LoadingSpinner } from '@/presentation/components/Spinner/Spinner'
+import { useAuth } from '@/presentation/hooks/useAuth'
 
 const PageNotFound = () => {
-  const { data: session } = useSession()
+  const { isAuthenticated, isLoading, getRedirectPath, getButtonText } = useAuth()
 
-  return (
-    <>
+  if (isLoading) {
+    return (
+      <LoadingSpinner /> 
+    )
+  }
 
-      {session === undefined || session === null
-        ?
-        <div className="notFound">
-          <div className="contenedor-notFound">
+  const content = (
+    <NotFoundContent
+      redirectPath={getRedirectPath()} 
+      buttonText={getButtonText()} 
+    />
+  )
 
-            <div className="titulo-not-found">
-              <h2 className="titulo"> 404 - Página no encontrada </h2>
-            </div>
-
-            <div className="imagen-not-found">
-              <Image src="/img/bad-request.jpg" className="imagen" width={500} height={500} alt="404 - Página no encontrada" />
-            </div>
-
-            <div className="boton-redireccion">
-              <Link className="link-pagina-principal" href={session === undefined || session === null ? "/" : "/blog"} >
-                {session === undefined || session === null ? "Inicia sesión" : "Ir a la página principal"}
-              </Link>
-            </div>
-
-          </div>
-        </div>
-        :
-        <EstructuraCuerpo>
-          <div className="notFound">
-            <div className="contenedor-notFound">
-
-              <div className="titulo-not-found">
-                <h2 className="titulo"> 404 - Página no encontrada </h2>
-              </div>
-
-              <div className="imagen-not-found">
-                <Image src="/img/bad-request.jpg" className="imagen" width={500} height={500} alt="404 - Página no encontrada" />
-              </div>
-
-              <div className="boton-redireccion">
-                <Link className="link-pagina-principal" href={session === undefined || session === null ? "/" : "/blog"} >
-                  {session === undefined || session === null ? "Inicia sesión" : "Ir a la página principal"}
-                </Link>
-              </div>
-
-            </div>
-          </div>
-        </EstructuraCuerpo>
-      }
-
-    </>
+  return isAuthenticated ? (
+    <EstructuraCuerpo>
+      {content}
+    </EstructuraCuerpo>
+  ) : (
+    content
   )
 }
 

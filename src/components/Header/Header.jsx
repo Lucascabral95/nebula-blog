@@ -1,16 +1,17 @@
 "use client"
-import "./Header.scss"
-import { TfiWrite } from "react-icons/tfi";
-import Image from "next/image";
-import { useSession } from "next-auth/react";
-import { HiMiniMagnifyingGlass } from "react-icons/hi2";
 import { useEffect, useState } from "react";
-import Settings from "../Settings/Settings";
+import Image from "next/image";
 import Link from "next/link";
 import axios from "axios";
+import { usePathname } from "next/navigation";
+import { TfiWrite } from "react-icons/tfi";
+import { useSession } from "next-auth/react";
+import { HiMiniMagnifyingGlass } from "react-icons/hi2";
+
+import Settings from "../Settings/Settings";
 import ItemsSearch from "./ItemsSearch";
 import useStore from "@/zustand";
-import { usePathname } from "next/navigation";
+import "./Header.scss"
 
 const Header = () => {
     const { toggleSearchFull, setArrayDePosteos, search, setSearch } = useStore()

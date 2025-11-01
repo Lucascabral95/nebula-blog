@@ -54,7 +54,7 @@
     "**/*.ts",
     "**/*.tsx",
     "next.config.mjs"
-  ],
+, "src/app/blog/mi-perfil/[id]/page.jsx"  ],
   "exclude": [
     "node_modules"
   ]

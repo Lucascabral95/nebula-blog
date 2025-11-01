@@ -1,4 +1,5 @@
 "use client"
+
 import Perfil from '../../perfil/[id]/page'
 
 const MiPerfil = () => {

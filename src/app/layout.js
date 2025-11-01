@@ -1,6 +1,7 @@
 import { Lora } from "next/font/google";
-import Providers from "./Providers";
+
 import Header from "@/components/Header/Header";
+import Providers from "./Providers";
 import "./App.scss"
 import 'react-loading-skeleton/dist/skeleton.css'
 
