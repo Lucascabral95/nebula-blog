@@ -129,7 +129,7 @@ import User from "@/models/User";
 class PostDAO {
   constructor() {
     this.dbInitialized = false;
-    this.initializeDB();
+    this.initializeDB()
   }
 
   async initializeDB() {
