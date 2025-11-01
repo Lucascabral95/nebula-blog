@@ -21,7 +21,6 @@ const Login = ({ setIsOpenLogin, setIsOpenRegister }: LoginProps) => {
 
   const closeModals = () => {
     setIsOpenLogin(false)
-    setIsOpenRegister(false)
   }
 
   const switchToRegister = () => {
@@ -42,7 +41,6 @@ const Login = ({ setIsOpenLogin, setIsOpenRegister }: LoginProps) => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.2 }}
-        //className="div-login"
       >
         <div className="div-login">
         <div className="login-titulo">
@@ -85,6 +83,7 @@ const Login = ({ setIsOpenLogin, setIsOpenRegister }: LoginProps) => {
                     type="email"
                     id="email"
                     value={formData.email}
+                    placeholder='Escribí tu correo electrónico'
                     onChange={(e) => handleChange('email', e.target.value)}
                     required
                     />
@@ -98,6 +97,7 @@ const Login = ({ setIsOpenLogin, setIsOpenRegister }: LoginProps) => {
                     type="password"
                     id="password"
                     value={formData.password}
+                    placeholder='Escribí tu contraseña'
                     onChange={(e) => handleChange('password', e.target.value)}
                     required
                     />

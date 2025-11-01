@@ -38,3 +38,5 @@ next-env.d.ts
 
 # md files
 *.md
+VERCEL_DEPLOYMENT_GUIDE.md
+VERCEL_ENV_SETUP.md

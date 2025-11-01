@@ -26,7 +26,6 @@ const Register = ({ setIsOpenRegister, setIsOpenLogin }: RegisterProps) => {
   }
 
   const closeModals = () => {
-    setIsOpenLogin(false)
     setIsOpenRegister(false)
   }
 
@@ -65,6 +64,7 @@ const Register = ({ setIsOpenRegister, setIsOpenLogin }: RegisterProps) => {
               <input
                 type="text"
                 id="name"
+                placeholder="Escribí tu nombre"
                 value={formData.name}
                 onChange={(e) => handleChange('name', e.target.value)}
                 required
@@ -78,6 +78,7 @@ const Register = ({ setIsOpenRegister, setIsOpenLogin }: RegisterProps) => {
               <input
                 type="email"
                 id="email"
+                placeholder="Escribí tu correo electrónico"
                 value={formData.email}
                 onChange={(e) => handleChange('email', e.target.value)}
                 required
@@ -91,6 +92,7 @@ const Register = ({ setIsOpenRegister, setIsOpenLogin }: RegisterProps) => {
               <input
                 type="password"
                 id="password"
+                placeholder="Escribí tu contraseña"
                 value={formData.password}
                 onChange={(e) => handleChange('password', e.target.value)}
                 required

@@ -27,6 +27,41 @@
 - **Notificaciones en Tiempo Real**: Sistema de toast notifications para feedback inmediato al usuario.
 - **Manejo de Errores Global**: Sistema centralizado de manejo de errores con mensajes contextualizados.
 
+## 🧪 Testing
+
+El proyecto implementa un sistema completo de testing utilizando **Vitest** y **React Testing Library**, garantizando la calidad y confiabilidad del código.
+
+### Configuración de Testing
+
+- **Framework de Testing**: [Vitest](https://vitest.dev/) - Test runner rápido y moderno
+- **Testing Library**: [@testing-library/react](https://testing-library.com/react) - Testing de componentes React
+- **Assertions**: [@testing-library/jest-dom](https://github.com/testing-library/jest-dom) - Matchers personalizados
+- **User Interactions**: [@testing-library/user-event](https://testing-library.com/docs/user-event/intro) - Simulación de eventos de usuario
+- **Environment**: [jsdom](https://github.com/jsdom/jsdom) - Entorno DOM para testing
+
+### Scripts de Testing
+
+```bash
+# Ejecutar todos los tests
+npm run test
+
+# Ejecutar tests en modo watch
+npm run test:watch
+
+# Generar reporte de cobertura
+npm run test:coverage
+```
+
+### Áreas de Testing Implementadas
+
+- **Componentes de UI**: Testing de renderizado, interacciones y estados
+- **Formularios**: Validación de inputs, envío y manejo de errores
+- **Autenticación**: Flujos de login, registro y gestión de sesiones
+- **API Routes**: Testing de endpoints y respuestas
+- **Hooks Personalizados**: Validación de lógica de negocio
+- **Utilidades**: Testing de funciones helper y formatters
+- **Integración**: Flujos completos de usuario end-to-end
+
 ---
 
 ## 🚀 Tecnologías Utilizadas
@@ -126,12 +161,21 @@ npm run build
 npm start
 ```
 
+```bash
+npm run lint
+```
+
+```bash
+npm run test
+```
+
 ### Scripts Disponibles
 
-- `npm run dev` - Inicia servidor de desarrollo
-- `npm run build` - Compila para producción
-- `npm start` - Inicia servidor de producción
-- `npm run lint` - Ejecuta análisis de código con ESLint
+- `npm run dev` - Iniciá servidor de desarrollo
+- `npm run build` - Compilá para producción
+- `npm start` - Iniciá servidor de producción
+- `npm run lint` - Ejecutá análisis de código con ESLint
+- `npm run lint` - Ejecutá el testing de los componentes de toda la aplicación
 
 ---
 
@@ -323,5 +367,4 @@ Para producción, asegurate de configurar todas las variables de entorno correct
 
 ## 🎯 Próximas Mejoras
 
-- [ ] Implementar sistema de testing con Jest y React Testing Library
 - [ ] Optimizar SEO con meta tags dinámicos
