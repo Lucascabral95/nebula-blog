@@ -14,9 +14,20 @@ import mongoose from "mongoose";
 
 const connectDB = async () => {
   try {
-    if (mongoose.connections[0].readyState === 1) {
+    // Check if already connected
+    if (mongoose.connection.readyState === 1) {
       console.log("Ya conectado a MongoDB");
       return;
+    }
+
+    // Check if connecting
+    if (mongoose.connection.readyState === 2) {
+      console.log("Conectando a MongoDB...");
+      return;
+    }
+
+    if (!process.env.MONGODB_URI) {
+      throw new Error("MONGODB_URI no está definido en las variables de entorno");
     }
 
     await mongoose.connect(process.env.MONGODB_URI, {
