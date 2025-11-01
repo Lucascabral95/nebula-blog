@@ -3,20 +3,31 @@ import Detalles from "@/models/Detalles";
 
 class DetallesDAO {
     constructor() {
-        this.inizializeDB();
+        this.dbInitialized = false;
+        this.initializeDB();
     }
 
-    async inizializeDB() {
+    async initializeDB() {
         try {
+            if (this.dbInitialized) return;
+
             await mongo();
+            this.dbInitialized = true;
         } catch (error) {
             console.error("Error al conectar a la base de datos:", error);
             throw error;
         }
     }
 
+    async ensureConnection() {
+        if (!this.dbInitialized) {
+            await this.initializeDB();
+        }
+    }
+
     async createDetalles(detalles) {
         try {
+            await this.ensureConnection();
             const newDetalles = new Detalles(detalles);
             const result = await newDetalles.save();
             return result;
@@ -28,6 +39,7 @@ class DetallesDAO {
 
     async getDetallesById(id) {
         try {
+            await this.ensureConnection();
             const result = await Detalles.findOne({ user: id });
             return result;
         } catch (error) {
@@ -38,6 +50,7 @@ class DetallesDAO {
 
     async updateDetallesById(id, detalles) {
         try {
+            await this.ensureConnection();
             const result = await Detalles.updateOne({ user: id }, detalles);
             return result;
         } catch (error) {
@@ -48,6 +61,7 @@ class DetallesDAO {
 
     async deleteDetallesById(id) {
         try {
+            await this.ensureConnection();
             const result = await Detalles.deleteOne({ user: id });
             return result;
         } catch (error) {
@@ -57,4 +71,6 @@ class DetallesDAO {
     }
 }
 
-export default new DetallesDAO();
+const detallesDAO = new DetallesDAO();
+
+export default detallesDAO;

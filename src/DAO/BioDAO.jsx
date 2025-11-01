@@ -83,4 +83,6 @@ class BioDAO {
     }
 }
 
-export default new BioDAO();
+const bioDAO = new BioDAO();
+
+export default bioDAO;

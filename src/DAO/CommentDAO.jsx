@@ -3,20 +3,31 @@ import Comment from "@/models/Comment";
 
 class CommentDAO {
     constructor() {
+        this.dbInitialized = false;
         this.initializeDB();
     }
 
     async initializeDB() {
         try {
+            if (this.dbInitialized) return;
+
             await mongo();
+            this.dbInitialized = true;
         } catch (error) {
             console.error("Error al conectar a la base de datos:", error);
             throw error;
         }
     }
 
+    async ensureConnection() {
+        if (!this.dbInitialized) {
+            await this.initializeDB();
+        }
+    }
+
     async getCommentsByPostID(id) {
         try {
+            await this.ensureConnection();
             const comments = (await Comment.find({ post: id }).populate("user"));
             return comments;
         } catch (error) {
@@ -27,6 +38,7 @@ class CommentDAO {
 
     async createComment(comment) {
         try {
+            await this.ensureConnection();
             const newComment = new Comment(comment);
             const result = await newComment.save();
             return result;
@@ -38,6 +50,7 @@ class CommentDAO {
 
     async deleteCommentById(id) {
         try {
+            await this.ensureConnection();
             const result = await Comment.deleteOne({ _id: id });
             return result;
         } catch (error) {
@@ -48,6 +61,7 @@ class CommentDAO {
 
     async updateCommentById(id) {
         try {
+            await this.ensureConnection();
             const result = await Comment.updateOne({ _id: id}, { $inc: { likes: 1 } });
             return result;
         } catch (error) {
@@ -57,4 +71,6 @@ class CommentDAO {
     }
 }
 
-export default new CommentDAO();
+const commentDAO = new CommentDAO();
+
+export default commentDAO;

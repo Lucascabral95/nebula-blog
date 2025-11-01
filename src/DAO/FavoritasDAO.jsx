@@ -3,20 +3,31 @@ import Favoritas from "@/models/Favoritas";
 
 class FavoritasDAO {
     constructor() {
-        this.inizializeDB();
+        this.dbInitialized = false;
+        this.initializeDB();
     }
 
-    async inizializeDB() {
+    async initializeDB() {
         try {
+            if (this.dbInitialized) return;
+
             await mongo();
+            this.dbInitialized = true;
         } catch (error) {
             console.error("Error al conectar a la base de datos:", error);
             throw error;
         }
     }
 
+    async ensureConnection() {
+        if (!this.dbInitialized) {
+            await this.initializeDB();
+        }
+    }
+
     async createFavorita(favorita) {
         try {
+            await this.ensureConnection();
             const result = await Favoritas.create(favorita);
             return result;
         } catch (error) {
@@ -27,6 +38,7 @@ class FavoritasDAO {
 
     async getFavoritasByUser(id) {
         try {
+            await this.ensureConnection();
             const favoritas = await Favoritas.findOne({ user: id }).populate("post");
             return favoritas;
         } catch (error) {
@@ -37,6 +49,7 @@ class FavoritasDAO {
 
     async addPostToFavoritas(user, post) {
         try {
+            await this.ensureConnection();
             const result = await Favoritas.updateOne({ user: user }, { $push: { post: post } });
             return result;
         } catch (error) {
@@ -47,6 +60,7 @@ class FavoritasDAO {
 
     async deletePostFromFavoritaByUserAndPostId(user, postId) {
         try {
+            await this.ensureConnection();
             const result = await Favoritas.updateOne({ user: user }, { $pull: { post: postId } });
             return result;
         } catch (error) {
@@ -56,4 +70,6 @@ class FavoritasDAO {
     }
 }
 
-export default new FavoritasDAO();
+const favoritasDAO = new FavoritasDAO();
+
+export default favoritasDAO;
