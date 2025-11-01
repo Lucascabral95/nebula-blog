@@ -8,9 +8,6 @@ const nextConfig = {
       },
     ],
   },
-  env: {
-    NEXTAUTH_URL: process.env.NEXTAUTH_URL,
-  },
   async redirects() {
     return [
       {
@@ -25,8 +22,8 @@ const nextConfig = {
           },
         ],
       },
-    ]
+    ];
   },
-}
+};
 
-export default nextConfig
+export default nextConfig;
