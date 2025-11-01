@@ -1,4 +1,4 @@
-import NextAuth from "next-auth";
+import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 import GoogleProvider from "next-auth/providers/google"
 import UserDAO from "@/DAO/UserDAO.jsx"
@@ -12,24 +12,34 @@ const handler = NextAuth({
                 password: { label: "Password", type: "password" }
             },
             async authorize(credentials, req) {
-                const client = await UserDAO.findUserByEmail(credentials.email.toLowerCase())
+                try {
+                    const client = await UserDAO.findUserByEmail(credentials.email.toLowerCase())
 
-                if (!client) {
-                    throw new Error("El usuario no existe")
+                    if (!client) {
+                        throw new Error("El usuario no existe")
+                    }
+
+                    const chequeoPassword = await UserDAO.validatePassword(credentials.password, client.password)
+
+                    if (!chequeoPassword) {
+                        throw new Error("El email o la contraseña son invalidos")
+                    }
+
+                    return {
+                        id: client._id.toString(),
+                        name: client.name,
+                        email: client.email,
+                        role: client.role
+                    }
+                } catch (error) {
+                    console.error("Error en autorización:", error);
+                    return null;
                 }
-
-                const chequeoPassword = await UserDAO.validatePassword(credentials.password, client.password)
-
-                if (!chequeoPassword) {
-                    throw new Error("El email o la contraseña son invalidos")
-                }
-
-                return client
             }
         }),
         GoogleProvider({
-            clientId: process.env.GOOGLE_CLIENT_ID,
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET
+            clientId: process.env.GOOGLE_CLIENT_ID || "",
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET || ""
         })
     ],
     callbacks: {
@@ -46,9 +56,9 @@ const handler = NextAuth({
                             avatar: profile.picture,
                             role: "author"
                         });
-                        user._id = newUser._id;
+                        user.id = newUser._id.toString();
                     } else {
-                        user._id = client._id;
+                        user.id = client._id.toString();
                     }
 
                 } catch (error) {
@@ -61,25 +71,22 @@ const handler = NextAuth({
         },
         async jwt({ token, user }) {
             if (user) {
-                token.id = user._id;
+                token.id = user.id;
             }
             return token;
         },
         async session({ session, token }) {
             if (token) {
                 session.user.id = token.id;
-                session.user.saludo = "Hola Developer Beginner";
             }
             return session;
-        },
-        async redirect({ url, baseUrl }) {
-            return process.env.REDIRECCION_ACCESO
         }
     },
     pages: {
         signIn: "/",
         signOut: "/",
     },
+    secret: process.env.NEXTAUTH_SECRET,
 })
 
 export { handler as GET, handler as POST }

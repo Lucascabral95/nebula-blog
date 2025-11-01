@@ -54,7 +54,7 @@
     "**/*.ts",
     "**/*.tsx",
     "next.config.mjs"
-, "src/app/blog/mi-perfil/[id]/page.jsx", "src/components/Settings/Settings.jsx", "src/components/ItemComment/ItemComment.jsx", "src/app/blog/posteo/[id]/page.tsx", "src/components/Header/ItemsSearch.jsx", "src/components/EditorTexto/EditorPrueba.tsx", "src/components/Register/Register.tsx"  ],
+, "src/app/blog/mi-perfil/[id]/page.jsx", "src/components/Settings/Settings.jsx", "src/components/ItemComment/ItemComment.jsx", "src/app/blog/posteo/[id]/page.tsx", "src/components/Header/ItemsSearch.jsx", "src/components/EditorTexto/EditorPrueba.tsx", "src/components/Register/Register.tsx", "src/DAO/PostDAO.jsx"  ],
   "exclude": [
     "node_modules"
   ]

@@ -1,3 +1,4 @@
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
     remotePatterns: [
@@ -6,6 +7,9 @@ const nextConfig = {
         hostname: 'lh3.googleusercontent.com',
       },
     ],
+  },
+  env: {
+    NEXTAUTH_URL: process.env.NEXTAUTH_URL,
   },
   async redirects() {
     return [
