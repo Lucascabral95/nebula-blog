@@ -1,5 +1,6 @@
-import "./ConfigData.scss"
 import { motion } from "framer-motion";
+
+import "./ConfigData.scss"
 
 const StructureConfigData = ({ titulo, childrenInputs, botones }) => {
 

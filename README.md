@@ -1,45 +1,327 @@
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png" alt="React Logo" width="180"/>
+</p>
+
 # Nebula Blog
+
+## Descripción general
+
+**Nebula Blog** es una aplicación web avanzada de blogging desarrollada con [Next.js](https://nextjs.org/) y TypeScript, diseñada para ofrecer una experiencia completa de creación y gestión de contenido. Este proyecto implementa una arquitectura modular con autenticación robusta, gestión de estado eficiente con Zustand, y una interfaz moderna y responsiva construida con Tailwind CSS y SCSS. La plataforma permite a los usuarios crear publicaciones, interactuar mediante likes y comentarios, gestionar perfiles personalizados y mantener una experiencia de usuario fluida y profesional.
+
+---
+
+## ⚙️ Características Principales
+
+- **Sistema Completo de Blogging**: Creación de publicaciones con título, categoría, slug automático y contenido rico, incluyendo editor de texto avanzado.
+- **Gestión de Usuarios Completa**: Registro e inicio de sesión local y con Google mediante NextAuth, perfiles personalizados con información detallada del usuario.
+- **Interacciones Sociales**: Sistema de likes en publicaciones y comentarios, comentarios anidados con valoración, y sistema de favoritos para guardar contenido relevante.
+- **Búsqueda y Filtrado Avanzado**: Buscador potente que permite filtrar publicaciones por título, autor o categoría, con exploración dinámica de categorías recomendadas.
+- **Panel de Usuario Personalizado**: Gestión completa del perfil, historial de publicaciones, favoritos y configuración de cuenta.
+- **Editor de Texto Profesional**: Editor de contenido con formato rico, previsualización en tiempo real y herramientas de edición avanzadas.
+- **Sistema de Categorías y Etiquetas**: Organización jerárquica del contenido con categorías, etiquetas y sistema de navegación intuitivo.
+- **Diseño Responsivo y Moderno**: UI adaptativa con Tailwind CSS, animaciones suaves con Framer Motion y experiencia optimizada para todos los dispositivos.
+- **Gestión de Estado Eficiente**: Estado global manejado con Zustand para sincronización de datos en tiempo real y experiencia de usuario fluida.
+- **API RESTful Completa**: Endpoints bien estructurados para todas las operaciones CRUD con validación y manejo de errores.
+- **Seguridad Robusta**: Protección de rutas, validación de datos, autenticación segura y manejo de sesiones con JWT.
+- **Optimización de Performance**: Server-Side Rendering, Image Optimization, lazy loading y caching inteligente.
+- **Notificaciones en Tiempo Real**: Sistema de toast notifications para feedback inmediato al usuario.
+- **Manejo de Errores Global**: Sistema centralizado de manejo de errores con mensajes contextualizados.
+
+---
+
+## 🚀 Tecnologías Utilizadas
+
+- **Framework Frontend**: [Next.js 14](https://nextjs.org/) con Server-Side Rendering y App Router
+- **Lenguaje**: [TypeScript](https://www.typescriptlang.org/) para tipado estático y mayor robustez
+- **Base de Datos**: [MongoDB](https://www.mongodb.com/) con [Mongoose](https://mongoosejs.com/) para modelado de datos
+- **Autenticación**: [NextAuth.js](https://next-auth.js.org/) con soporte para Google OAuth y credenciales locales
+- **Gestión de Estado**: [Zustand](https://github.com/pmndrs/zustand) para estado global eficiente
+- **Estilos**: [Tailwind CSS](https://tailwindcss.com/) y [SCSS](https://sass-lang.com/) para diseño modular
+- **Animaciones**: [Framer Motion](https://www.framer.com/motion/) para transiciones suaves
+- **HTTP Client**: [Axios](https://axios-http.com/) para comunicación con APIs
+- **Notificaciones**: [React Hot Toast](https://react-hot-toast.com/) para feedback visual
+- **Iconos**: [React Icons](https://react-icons.github.io/react-icons/) para interfaz enriquecida
+- **Loading States**: [React Loading Skeleton](https://github.com/dvtng/react-loading-skeleton) para mejor UX
+- **Manejo de Fechas**: [Moment.js](https://momentjs.com/) para gestión de timestamps
+- **Seguridad**: [bcrypt](https://www.npmjs.com/package/bcrypt) para hashing de contraseñas
+- **Desarrollo**: [ESLint](https://eslint.org/) para calidad de código, [PostCSS](https://postcss.org/) y [Autoprefixer](https://github.com/postcss/autoprefixer)
+
+---
+
+## Tabla de contenidos
+
+- [Instalación](#instalación)
+- [Uso](#uso)
+- [Variables de Entorno](#variables-de-entorno)
+- [Estructura del proyecto](#estructura-del-proyecto)
+- [API Endpoints](#api-endpoints)
+- [Contribuciones](#contribuciones)
+- [Licencia](#licencia)
+- [Contacto](#contacto)
+
+---
 
 ## Instalación
 
-Instalar real-time-chat con npm
+1. **Cloná el repositorio:**
 
 ```bash
-  git clone https://github.com/Lucascabral95/nebula-blog.git
-  cd nebula-blog
-  npm install 
-  npm run dev
+git clone https://github.com/Lucascabral95/nebula-blog.git
+cd nebula-blog
 ```
- 
-## 🌟 Descripción
 
-Blog interactivo con gestión de usuarios y persistencia de estado, donde cada perfil permite la creación de publicaciones, interacción mediante likes y comentarios, y la opción de guardar posteos en favorits. Diseñado para ofrecer una experiencia personalizada y de alto rendimiento.
+2. **Instalá las dependencias:**
 
-## ⚙️ Características Principales:
+```bash
+npm install
+```
 
-- **Creación de Publicaciones**: Los usuarios pueden crear posteos con título, categoría, slug automático y contenido.
-- **Filtrado de Publicaciones**: Permite filtrar posteos por título, autor o categoría mediante un buscador, así como explorar un conjunto de categorías recomendadas.
-- **Secciones Dinámicas**:Cada publicación incluye información del autor, y los usuarios pueden dar likes y realizar comentarios, que también pueden ser valorados.
-- **Perfil Personalizado**: Los usuarios pueden agregar datos personales para exhibir en su perfil.
-- **Favoritos**: Posibilidad de guardar publicaciones en favoritos para un acceso rápido.
-- **Autenticación Segura**: Implementa login y registro, permitiendo acceso con credenciales propias o mediante autenticación con Google, gracias a NextAuth.
+3. **Configurá las variables de entorno:**
 
-## 📄 Conclusión:
+```bash
+cp .env.example .env.local
+```
 
-**Nebula Blog**: este blog interactivo es una muestra de mis habilidades en desarrollo web, combinando funcionalidades robustas con un enfoque centrado en el usuario. A través de la gestión de publicaciones, interacciones dinámicas y autenticación segura, he creado una plataforma que fomenta la participación y mejora la experiencia del usuario. Este proyecto refleja mi compromiso con la calidad y la innovación, y resalta mi capacidad para aportar soluciones efectivas y escalables en el ámbito del desarrollo de aplicaciones web.
+Editá el archivo `.env.local` con tus credenciales:
 
-## 🚀 Tecnologías Utilizadas 
+```env
+# Base de Datos MongoDB
+MONGODB_URI=tu_mongodb_connection_string
 
-- **Next.js**: Framework de React que permite la construcción de aplicaciones web y APIs con funcionalidades de renderizado del lado del servidor.
-- **MongoDB**: Base de datos NoSQL que almacena los mensajes y datos de usuario de forma persistente.
-- **SASS**: Para estilos y diseño responsivo, asegurando una buena experiencia en diferentes dispositivos.
-- **NextAuth.js**: Librería de autenticación que soporta múltiples métodos de inicio de sesión, incluyendo Google.
-- **Zustand**: : Librería de gestión de estado para aplicaciones JavaScript, diseñada para manejar estados globales de forma eficiente y sencilla. Facilita el acceso y actualización de datos en distintas partes de una aplicación sin depender de estructuras complejas.
+# NextAuth.js
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=tu_secreto_aqui
+
+# Google OAuth (opcional)
+GOOGLE_CLIENT_ID=tu_google_client_id
+GOOGLE_CLIENT_SECRET=tu_google_client_secret
+```
+
+4. **Iniciá la base de datos:**
+
+Asegurate de tener MongoDB corriendo localmente o configurá la conexión a tu base de datos en la nube.
+
+5. **Compilá y ejecutá el proyecto:**
+
+```bash
+npm run dev
+```
+
+---
+
+## Uso
+
+### Modo Desarrollo
+
+```bash
+npm run dev
+```
+
+La aplicación estará disponible en: `http://localhost:3000`
+
+### Modo Producción
+
+```bash
+npm run build
+npm start
+```
+
+### Scripts Disponibles
+
+- `npm run dev` - Inicia servidor de desarrollo
+- `npm run build` - Compila para producción
+- `npm start` - Inicia servidor de producción
+- `npm run lint` - Ejecuta análisis de código con ESLint
+
+---
+
+## Variables de Entorno
+
+El proyecto requiere las siguientes variables de entorno en `.env.local`:
+
+| Variable | Descripción | Requerida |
+|----------|-------------|-----------|
+| `MONGODB_URI` | String de conexión a MongoDB | ✅ |
+| `NEXTAUTH_URL` | URL base de la aplicación | ✅ |
+| `NEXTAUTH_SECRET` | Secreto para NextAuth.js | ✅ |
+| `GOOGLE_CLIENT_ID` | Client ID de Google OAuth | ❌ |
+| `GOOGLE_CLIENT_SECRET` | Client Secret de Google OAuth | ❌ |
+
+---
+
+## Estructura del proyecto
+
+```bash
+├── src/
+│   ├── app/                          # App Router de Next.js 14
+│   │   ├── api/                      # Rutas de API
+│   │   │   ├── auth/                 # Endpoints de autenticación
+│   │   │   ├── category/             # Gestión de categorías
+│   │   │   ├── comment/              # Gestión de comentarios
+│   │   │   ├── detalles/             # Detalles de usuarios
+│   │   │   ├── post/                 # CRUD de publicaciones
+│   │   │   ├── register/             # Registro de usuarios
+│   │   │   └── tag/                  # Gestión de etiquetas
+│   │   ├── blog/                     # Páginas del blog
+│   │   │   ├── escribir-posteo/      # Editor de publicaciones
+│   │   │   ├── mi-perfil/            # Perfil de usuario
+│   │   │   ├── perfil/               # Perfiles públicos
+│   │   │   └── posteo/               # Detalle de publicaciones
+│   │   ├── globals.css               # Estilos globales
+│   │   ├── layout.js                 # Layout principal
+│   │   └── page.jsx                  # Página de inicio
+│   │
+│   ├── components/                   # Componentes reutilizables
+│   │   ├── ConfigData/               # Configuración de datos
+│   │   ├── EditorTexto/              # Editor de texto rico
+│   │   ├── EstructuraCuerpo/         # Estructura principal
+│   │   ├── EstructuraLoginRegister/  # Formularios de auth
+│   │   ├── Header/                   # Navegación y header
+│   │   ├── ItemComment/              # Componente de comentarios
+│   │   ├── Login/                    # Formulario de login
+│   │   ├── Register/                 # Formulario de registro
+│   │   └── Settings/                 # Configuración de usuario
+│   │
+│   ├── DAO/                          # Data Access Objects
+│   │   ├── categoryDAO.js            # Acceso a categorías
+│   │   ├── commentDAO.js             # Acceso a comentarios
+│   │   ├── postDAO.js                # Acceso a publicaciones
+│   │   ├── tagDAO.js                 # Acceso a etiquetas
+│   │   └── userDAO.js                # Acceso a usuarios
+│   │
+│   ├── infrastructure/               # Configuración y utilidades
+│   │   ├── database/                 # Configuración de DB
+│   │   ├── middlewares/              # Middlewares personalizados
+│   │   ├── validators/               # Validaciones de datos
+│   │   └── utils/                    # Funciones utilitarias
+│   │
+│   ├── models/                       # Modelos de datos
+│   │   ├── Category.js               # Modelo de categoría
+│   │   ├── Comment.js                # Modelo de comentario
+│   │   ├── Post.js                   # Modelo de publicación
+│   │   ├── Tag.js                    # Modelo de etiqueta
+│   │   └── User.js                   # Modelo de usuario
+│   │
+│   ├── presentation/                 # Componentes de presentación
+│   │   ├── cards/                    # Tarjetas de contenido
+│   │   ├── forms/                    # Formularios reutilizables
+│   │   └── layouts/                  # Layouts específicos
+│   │
+│   ├── services/                     # Lógica de negocio
+│   │   └── authService.js            # Servicio de autenticación
+│   │
+│   ├── utils/                        # Utilidades globales
+│   │   └── helpers.js                # Funciones helper
+│   │
+│   ├── zustand.jsx                   # Store de Zustand
+│   └── middleware.jsx                # Middleware de Next.js
+│
+├── public/                           # Assets estáticos
+│   ├── fonts/                        # Fuentes personalizadas
+│   └── favicon.ico                   # Favicon
+│
+├── .env.local                        # Variables de entorno (local)
+├── .eslintrc.json                    # Configuración de ESLint
+├── jsconfig.json                     # Configuración de JavaScript
+├── next.config.mjs                   # Configuración de Next.js
+├── package.json                      # Dependencias y scripts
+├── tailwind.config.ts                # Configuración de Tailwind CSS
+├── tsconfig.json                     # Configuración de TypeScript
+└── README.md                         # Documentación
+
+```
+
+---
+
+## API Endpoints
+
+### Autenticación
+- `POST /api/auth/login` - Iniciar sesión
+- `POST /api/auth/register` - Registrar usuario
+- `GET /api/auth/session` - Obtener sesión actual
+
+### Publicaciones
+- `GET /api/post` - Obtener todas las publicaciones
+- `POST /api/post` - Crear nueva publicación
+- `GET /api/post/[id]` - Obtener publicación por ID
+- `PUT /api/post/[id]` - Actualizar publicación
+- `DELETE /api/post/[id]` - Eliminar publicación
+
+### Comentarios
+- `GET /api/comment/[postId]` - Obtener comentarios de una publicación
+- `POST /api/comment` - Crear nuevo comentario
+- `PUT /api/comment/[id]` - Actualizar comentario
+- `DELETE /api/comment/[id]` - Eliminar comentario
+
+### Categorías
+- `GET /api/category` - Obtener todas las categorías
+- `POST /api/category` - Crear nueva categoría
+
+### Usuarios
+- `GET /api/detalles/[id]` - Obtener detalles de usuario
+- `PUT /api/detalles/[id]` - Actualizar perfil de usuario
+
+---
+
+## Contribuciones
+
+¡Las contribuciones son bienvenidas! Seguí estos pasos:
+
+1. **Hacé un fork del repositorio.**
+2. **Creá una rama para tu feature o fix:**
+   ```bash
+   git checkout -b feature/nueva-funcionalidad
+   ```
+3. **Realizá tus cambios y escribí pruebas si es necesario.**
+4. **Hacé commit y push a tu rama:**
+   ```bash
+   git commit -m "feat: agrega nueva funcionalidad"
+   git push origin feature/nueva-funcionalidad
+   ```
+5. **Abrí un Pull Request describiendo tus cambios.**
+
+### Guía de Estilo
+- Usá TypeScript para todo el código nuevo
+- Seguí las convenciones de ESLint
+- Escribí mensajes de commit claros y descriptivos
+- Agregá pruebas para nuevas funcionalidades
+
+---
+
+## Licencia
+
+Este proyecto está bajo la licencia **MIT**. Podés ver el archivo [LICENSE](LICENSE) para más detalles.
+
+---
 
 ## 📬 Contacto
 
-Si tenés alguna pregunta o sugerencia, no dudes en contactarme a través de lucassimple@hotmail.com o https://github.com/Lucascabral95
+- **Autor:** Lucas Cabral
+- **Email:** lucassimple@hotmail.com
+- **GitHub:** [https://github.com/Lucascabral95](https://github.com/Lucascabral95)
+- **Portfolio:** [https://portfolio-web-dev-git-main-lucascabral95s-projects.vercel.app/](https://portfolio-web-dev-git-main-lucascabral95s-projects.vercel.app/)
 
-### Notas: 
+---
 
-- Añadí secciones como **Tecnologías Utilizadas**, **Descripción**, **Conclusión**, **Características Principales** y **Contacto** para hacer el README más completo.
+## 📄 Conclusión
+
+**Nebula Blog** representa una solución completa y profesional para la gestión de contenido web, combinando tecnologías modernas con mejores prácticas de desarrollo. A través de su arquitectura limpia, sistema de autenticación robusto y experiencia de usuario optimizada, este proyecto demuestra capacidad para construir aplicaciones web escalables y mantenibles. La implementación de patrones de diseño modernos, gestión eficiente del estado y atención al detalle en la interfaz reflejan un compromiso con la calidad y la innovación en el desarrollo de software.
+
+---
+
+### 🚀 Despliegue
+
+El proyecto está listo para ser desplegado en plataformas como:
+- **Vercel** (recomendado para Next.js)
+- **Netlify**
+- **Heroku**
+- **AWS Amplify**
+
+Para producción, asegurate de configurar todas las variables de entorno correctamente y seguir las mejores prácticas de seguridad.
+
+---
+
+## 🎯 Próximas Mejoras
+
+- [ ] Implementar sistema de testing con Jest y React Testing Library
+- [ ] Optimizar SEO con meta tags dinámicos
