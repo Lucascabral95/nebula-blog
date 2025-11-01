@@ -40,7 +40,7 @@ import bioDAO from './BioDAO.jsx';
 describe('BioDAO', () => {
   it('should have all main methods', () => {
     expect(typeof bioDAO.createBio).toBe('function');
-    expect(typeof bioDAO.getBioById).toBe('functionn');
+    expect(typeof bioDAO.getBioById).toBe('function');
     expect(typeof bioDAO.updateBioById).toBe('function');
     expect(typeof bioDAO.deleteBioById).toBe('function');
     expect(typeof bioDAO.getBioFromPostAuthor).toBe('function');
